@@ -47,7 +47,7 @@ NSBundle *tweakBundle = uYouPlusBundle();
 static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *identifiers) {
     for (id child in [nodeController children]) {
         if ([child isKindOfClass:%c(ELMNodeController)]) {
-            NSArray <ELMComponent *> *elmChildren = [(ELMNodeController *)child children];
+            NSArray <ELMComponent *> *elmChildren = [(ELMNodeController  * _Nullable)child children];
             for (ELMComponent *elmChild in elmChildren) {
                 for (NSString *identifier in identifiers) {
                     if ([[elmChild description] containsString:identifier])
@@ -57,8 +57,8 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
         }
 
         if ([child isKindOfClass:%c(ASNodeController)]) {
-            ASDisplayNode *childNode = ((ASNodeController *)child).node; // ELMContainerNode
-            NSArray *yogaChildren = childNode.yogaChildren;
+            ASDisplayNode *childNode = ((ASNodeController  * _Nullable)child).node; // ELMContainerNode
+            NSArray<id> *yogaChildren = childNode.yogaChildren;
             for (ASDisplayNode *displayNode in yogaChildren) {
                 if ([identifiers containsObject:displayNode.accessibilityIdentifier])
                     return YES;
@@ -72,20 +72,21 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     return NO;
 }
 
-%hook ASCollectionView
+%hook ASCollectionView // This stopped working on May 14th 2024 due to a Server-Side Change from YouTube.
 
-- (CGSize)sizeForElement:(ASCollectionElement *)element {
+- (CGSize)sizeForElement:(ASCollectionElement  * _Nullable)element {
     if ([self.accessibilityIdentifier isEqualToString:@"id.video.scrollable_action_bar"]) {
         ASCellNode *node = [element node];
         ASNodeController *nodeController = [node controller];
+
         if (IS_ENABLED(@"hideRemixButton_enabled") && findCell(nodeController, @[@"id.video.remix.button"])) {
             return CGSizeZero;
         }
-        
+
         if (IS_ENABLED(@"hideClipButton_enabled") && findCell(nodeController, @[@"clip_button.eml"])) {
             return CGSizeZero;
         }
-        
+
         if (IS_ENABLED(@"hideDownloadButton_enabled") && findCell(nodeController, @[@"id.ui.add_to.offline.button"])) {
             return CGSizeZero;
         }
