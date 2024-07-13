@@ -15,14 +15,14 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/arichornlover/uYouEnhanced/releases/latest"><img src="https://custom-icon-badges.demolab.com/github/v/release/arichornlover/uYouEnhanced?logo=youtube&color=%23e81e8a&label=Latest%20Release" alt="Latest Release Badge"></a>
-    <a href="https://github.com/arichornlover/uYouEnhanced/commit"><img src="https://custom-icon-badges.demolab.com/github/last-commit/arichornlover/uYouEnhanced?logo=history&logoColor=white&color=%23e81e8a&label=Last%20Commit" alt="Last Commit Badge"></a>
-    <a href="https://github.com/arichornlover/uYouEnhanced/issues"><img src="https://custom-icon-badges.demolab.com/github/issues-raw/arichornlover/uYouEnhanced?logo=issue-opened&logoColor=white&color=%23e81e8a&label=Issues" alt="Issues Badge"></a>
+    <a href="https://github.com/arichornloverALT/uYouEnhanced/releases/latest"><img src="https://custom-icon-badges.demolab.com/github/v/release/arichornloverALT/uYouEnhanced?logo=youtube&color=%23e81e8a&label=Latest%20Release" alt="Latest Release Badge"></a>
+    <a href="https://github.com/arichornloverALT/uYouEnhanced/commit"><img src="https://custom-icon-badges.demolab.com/github/last-commit/arichornloverALT/uYouEnhanced?logo=history&logoColor=white&color=%23e81e8a&label=Last%20Commit" alt="Last Commit Badge"></a>
+    <a href="https://github.com/arichornloverALT/uYouEnhanced/issues"><img src="https://custom-icon-badges.demolab.com/github/issues-raw/arichornloverALT/uYouEnhanced?logo=issue-opened&logoColor=white&color=%23e81e8a&label=Issues" alt="Issues Badge"></a>
 </p>
 
 <p align="center">
-    <a href="https://github.com/arichornlover/uYouEnhanced/stargazers"><img src="https://custom-icon-badges.demolab.com/github/stars/arichornlover/uYouEnhanced?style=flat&logo=star&logoColor=white&color=%23e81e8a&label=Stars" alt="Stars Badge"></img></a>
-<a href="https://github.com/arichornlover/uYouEnhanced/network/members"><img src="https://custom-icon-badges.demolab.com/github/forks/arichornlover/uYouEnhanced?style=flat&logo=github&logoColor=white&color=%23e81e8a&label=Forks"></a>
+    <a href="https://github.com/arichornloverALT/uYouEnhanced/stargazers"><img src="https://custom-icon-badges.demolab.com/github/stars/arichornloverALT/uYouEnhanced?style=flat&logo=star&logoColor=white&color=%23e81e8a&label=Stars" alt="Stars Badge"></img></a>
+<a href="https://github.com/arichornloverALT/uYouEnhanced/network/members"><img src="https://custom-icon-badges.demolab.com/github/forks/arichornloverALT/uYouEnhanced?style=flat&logo=github&logoColor=white&color=%23e81e8a&label=Forks"></a>
 </p>
 
 > [!NOTE]
