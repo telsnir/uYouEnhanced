@@ -1,10 +1,10 @@
 [submodule "Tweaks/YTUHD"]
 	path = Tweaks/YTUHD
-	url = https://github.com/PoomSmart/YTUHD.git
+	url = https://github.com/arichornloverALT/YTUHD.git
 	branch = master
 [submodule "Tweaks/YouPiP"]
 	path = Tweaks/YouPiP
-	url = https://github.com/PoomSmart/YouPiP.git
+	url = https://github.com/arichornloverALT/YouPiP.git
 	branch = main
 [submodule "Tweaks/YouMute"]
 	path = Tweaks/YouMute
@@ -12,19 +12,18 @@
 	branch = main
 [submodule "Tweaks/YouQuality"]
 	path = Tweaks/YouQuality
-	url = https://github.com/PoomSmart/YouQuality.git
+	url = https://github.com/arichornloverALT/YouQuality.git
 	branch = main
 [submodule "Tweaks/YTVideoOverlay"]
 	path = Tweaks/YTVideoOverlay
-	url = https://github.com/PoomSmart/YTVideoOverlay.git
+	url = https://github.com/arichornloverALT/YTVideoOverlay.git
 	branch = main
 [submodule "Tweaks/Return-YouTube-Dislikes"]
 	path = Tweaks/Return-YouTube-Dislikes
 	url = https://github.com/PoomSmart/Return-YouTube-Dislikes.git
-	branch = main
 [submodule "Tweaks/YouTubeHeader"]
 	path = Tweaks/YouTubeHeader
-	url = https://github.com/PoomSmart/YouTubeHeader.git
+	url = https://github.com/arichornloverALT/YouTubeHeader.git
 	branch = main
 [submodule "Extensions"]
 	path = Extensions
@@ -59,7 +58,29 @@
 	url = https://github.com/PoomSmart/NoYTPremium.git
 [submodule "Tweaks/YTSpeed"]
 	path = Tweaks/YTSpeed
-	url = https://github.com/therealFoxster/YTSpeed.git
+	url = https://github.com/arichornloverALT/YTSpeed.git
 [submodule "Tweaks/YouTube-X"]
 	path = Tweaks/YouTube-X
 	url = https://github.com/PoomSmart/YouTube-X/
+[submodule "Tweaks/IAmYouTube"]
+	path = Tweaks/IAmYouTube
+	url = https://github.com/PoomSmart/IAmYouTube.git
+[submodule "Tweaks/YTHoldForSpeed"]
+	path = Tweaks/YTHoldForSpeed
+	url = https://github.com/arichornloverALT/YTHoldForSpeed.git
+[submodule "Tweaks/MrBeastify"]
+	path = Tweaks/MrBeastify
+	url = https://github.com/arichornloverALT/MrBeastify.git
+	branch = main
+[submodule "Tweaks/uYouLocalization"]
+	path = Tweaks/uYouLocalization
+	url = https://github.com/dayanch96/uYouLocalization.git
+[submodule "Tweaks/YouGroupSettings"]
+	path = Tweaks/YouGroupSettings
+	url = https://github.com/arichornloverALT/YouGroupSettings.git
+[submodule "Tweaks/YouTimeStamp"]
+	path = Tweaks/YouTimeStamp
+	url = https://github.com/arichornloverALT/YouTimeStamp.git
+[submodule "Tweaks/protobuf"]
+	path = Tweaks/protobuf
+	url = https://github.com/protocolbuffers/protobuf.git
