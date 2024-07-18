@@ -62,25 +62,3 @@
 [submodule "Tweaks/YouTube-X"]
 	path = Tweaks/YouTube-X
 	url = https://github.com/PoomSmart/YouTube-X/
-[submodule "Tweaks/IAmYouTube"]
-	path = Tweaks/IAmYouTube
-	url = https://github.com/PoomSmart/IAmYouTube.git
-[submodule "Tweaks/YTHoldForSpeed"]
-	path = Tweaks/YTHoldForSpeed
-	url = https://github.com/arichornloverALT/YTHoldForSpeed.git
-[submodule "Tweaks/MrBeastify"]
-	path = Tweaks/MrBeastify
-	url = https://github.com/arichornloverALT/MrBeastify.git
-	branch = main
-[submodule "Tweaks/uYouLocalization"]
-	path = Tweaks/uYouLocalization
-	url = https://github.com/dayanch96/uYouLocalization.git
-[submodule "Tweaks/YouGroupSettings"]
-	path = Tweaks/YouGroupSettings
-	url = https://github.com/arichornloverALT/YouGroupSettings.git
-[submodule "Tweaks/YouTimeStamp"]
-	path = Tweaks/YouTimeStamp
-	url = https://github.com/arichornloverALT/YouTimeStamp.git
-[submodule "Tweaks/protobuf"]
-	path = Tweaks/protobuf
-	url = https://github.com/protocolbuffers/protobuf.git
