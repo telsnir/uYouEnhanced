@@ -1580,7 +1580,7 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
 // Remove “Play next in queue” from the menu (@PoomSmart) - qnblackcat/uYouPlus#1138
 %hook YTMenuItemVisibilityHandler
 - (BOOL)shouldShowServiceItemRenderer:(YTIMenuConditionalServiceItemRenderer *)renderer {
-    return IS_ENABLED(@"hidePlayNextInQueue_enabled") && renderer.icon.iconType == 251 ? NO : %orig;
+    return IS_ENABLED(@"hidePlayNextInQueue_enabled") && renderer.icon.iconType == 251 && renderer.secondaryIcon.iconType == 741 ? NO : %orig;
 }
 %end
 
