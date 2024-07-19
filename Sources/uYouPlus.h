@@ -37,6 +37,7 @@
 #import <YouTubeHeader/YTIStringRun.h>
 #import <YouTubeHeader/YTMainAppVideoPlayerOverlayViewController.h>
 #import <YouTubeHeader/YTMainAppVideoPlayerOverlayView.h>
+#import <YouTubeHeader/YTNavigationBarTitleView.h>
 #import <YouTubeHeader/YTPlayerBarController.h>
 #import <YouTubeHeader/YTPlayerBarRectangleDecorationView.h>
 #import <YouTubeHeader/YTPlayerOverlay.h>
