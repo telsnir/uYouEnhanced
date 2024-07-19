@@ -116,7 +116,12 @@
 @interface YTWatchViewController (uYouEnhanced)
 - (UIInterfaceOrientationMask) supportedInterfaceOrientations;
 - (UIInterfaceOrientation) preferredInterfaceOrientationForPresentation;
-- (void)forceRightFullscreenOrientation;
+@end
+
+// Center YouTube Logo (Custom Version) - @arichornlover
+@interface YTNavigationBarTitleView (uYouEnhanced)
+@property (nonatomic, strong) UIView *customView;
+- (void)alignCustomViewToCenterOfWindow;
 @end
 
 // uYouPlus
