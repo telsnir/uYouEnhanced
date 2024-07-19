@@ -264,6 +264,7 @@ static __strong NSData *cellDividerData;
 - (BOOL)shouldCenterNavBarTitleView {
     return YES;
 }
+%new;
 - (void)alignCustomViewToCenterOfWindow {
     CGRect frame = self.customView.frame;
     frame.origin.x = (self.window.frame.size.width - frame.size.width) / 2;
