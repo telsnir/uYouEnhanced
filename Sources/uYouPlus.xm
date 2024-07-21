@@ -105,6 +105,14 @@ NSBundle *tweakBundle = uYouPlusBundle();
 - (void)decorateContext:(id)context { %orig(nil); }
 %end
 
+%hook YTLocalPlaybackController
+- (id)createAdsPlaybackCoordinator { return nil; }
+%end
+
+%hook MDXSession
+- (void)adPlaying:(id)ad {}
+%end
+
 %hook YTReelInfinitePlaybackDataSource
 - (void)setReels:(NSMutableOrderedSet <YTReelModel *> *)reels {
     [reels removeObjectsAtIndexes:[reels indexesOfObjectsPassingTest:^BOOL(YTReelModel *obj, NSUInteger idx, BOOL *stop) {
