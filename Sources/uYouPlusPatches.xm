@@ -171,15 +171,16 @@ static BOOL showNativeShareSheet(NSString *serializedShareEntity, UIView *source
     YTIShareEntityEndpoint *shareEntityEndpoint = [self.command getExtension:shareEntityEndpointDescriptor];
     if (!shareEntityEndpoint.hasSerializedShareEntity)
         return %orig;
-    if (!showNativeShareSheet(shareEntityEndpoint.serializedShareEntity))
+    if (!showNativeShareSheet(shareEntityEndpoint.serializedShareEntity, self.fromView))
         return %orig;
 }
 %end
 
+
 /* ------------------- iPhone Layout ------------------- */
 
 %hook ELMPBShowActionSheetCommand
-- (void)executeWithCommandContext:(id)_context handler:(id)_handler {
+- (void)executeWithCommandContext:(ELMCommandContext*)context handler:(id)_handler {
     if (!self.hasOnAppear)
         return %orig;
     GPBExtensionDescriptor *innertubeCommandDescriptor = [%c(YTIInnertubeCommandExtensionRoot) innertubeCommand];
@@ -192,7 +193,7 @@ static BOOL showNativeShareSheet(NSString *serializedShareEntity, UIView *source
     YTIUpdateShareSheetCommand *updateShareSheetCommand = [innertubeCommand getExtension:updateShareSheetCommandDescriptor];
     if (!updateShareSheetCommand.hasSerializedShareEntity)
         return %orig;
-    if (!showNativeShareSheet(updateShareSheetCommand.serializedShareEntity))
+    if (!showNativeShareSheet(updateShareSheetCommand.serializedShareEntity, context.context.fromView))
         return %orig;
 }
 %end
