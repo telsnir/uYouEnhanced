@@ -2,8 +2,8 @@
 
 # pragma mark - YouTube patches
 
-/*
 // Fix Google Sign in by @PoomSmart and @level3tjg (qnblackcat/uYouPlus#684)
+%group gGoogleSignInPatch
 %hook NSBundle
 - (NSDictionary *)infoDictionary {
     NSMutableDictionary *info = %orig.mutableCopy;
@@ -12,7 +12,7 @@
     return info;
 }
 %end
-*/
+%end
 
 // Workaround for MiRO92/uYou-for-YouTube#12, qnblackcat/uYouPlus#263
 %hook YTDataUtils
@@ -337,6 +337,9 @@ static void refreshUYouAppearance() {
 
 %ctor {
     %init;
+    if (IS_ENABLED(@"googleSignInPatch_enabled")) {
+        %init(gGoogleSignInPatch);
+    }
     // if (@available(iOS 16, *)) {
     //     %init(iOS16);
     // }
