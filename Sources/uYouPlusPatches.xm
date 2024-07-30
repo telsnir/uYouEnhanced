@@ -98,6 +98,7 @@ typedef NS_ENUM(NSInteger, ShareEntityType) {
     ShareEntityFieldVideo = 1,
     ShareEntityFieldPlaylist = 2,
     ShareEntityFieldChannel = 3,
+    ShareEntityFieldPost = 6,
     ShareEntityFieldClip = 8
 };
 
@@ -110,7 +111,8 @@ static inline NSString* extractIdWithFormat(GPBUnknownFieldSet *fields, NSIntege
     NSString *id = [[NSString alloc] initWithData:[idField.lengthDelimitedList firstObject] encoding:NSUTF8StringEncoding];
     return [NSString stringWithFormat:format, id];
 }
-static BOOL showNativeShareSheet(NSString *serializedShareEntity) {
+
+static BOOL showNativeShareSheet(NSString *serializedShareEntity, UIView *sourceView) {
     GPBMessage *shareEntity = [%c(GPBMessage) deserializeFromString:serializedShareEntity];
     GPBUnknownFieldSet *fields = shareEntity.unknownFields;
     NSString *shareUrl;
@@ -139,6 +141,9 @@ static BOOL showNativeShareSheet(NSString *serializedShareEntity) {
         shareUrl = extractIdWithFormat(fields, ShareEntityFieldVideo, @"https://youtube.com/watch?v=%@");
 
     if (!shareUrl)
+        shareUrl = extractIdWithFormat(fields, ShareEntityFieldPost, @"https://youtube.com/post/%@");
+
+    if (!shareUrl)
         return NO;
 
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[shareUrl] applicationActivities:nil];
@@ -148,14 +153,11 @@ static BOOL showNativeShareSheet(NSString *serializedShareEntity) {
 
     if (activityViewController.popoverPresentationController) {
         activityViewController.popoverPresentationController.sourceView = topViewController.view;
-
-        CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
-        CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
-
-        activityViewController.popoverPresentationController.sourceRect = CGRectMake(screenWidth / 2.0, screenHeight, 0, 0);
-        activityViewController.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+        activityViewController.popoverPresentationController.sourceRect = [sourceView convertRect:sourceView.bounds toView:topViewController.view];
     }
+
     [topViewController presentViewController:activityViewController animated:YES completion:nil];
+
     return YES;
 }
 
