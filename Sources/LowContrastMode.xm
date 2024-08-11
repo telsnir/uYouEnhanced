@@ -10,9 +10,9 @@ static BOOL lowContrastMode() {
 static BOOL customContrastMode() {
     return IS_ENABLED(@"lowContrastMode_enabled") && contrastMode() == 1;
 }
-static UIColor *whiteTextColor() {
-    return [UIColor whiteColor];
-}
+// static UIColor *whiteTextColor() {
+//     return [UIColor whiteColor];
+// }
 
 UIColor *lcmHexColor;
 
