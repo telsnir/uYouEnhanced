@@ -10,6 +10,9 @@ static BOOL lowContrastMode() {
 static BOOL customContrastMode() {
     return IS_ENABLED(@"lowContrastMode_enabled") && contrastMode() == 1;
 }
+static UIColor *whiteTextColor() {
+    return [UIColor whiteColor];
+}
 
 UIColor *lcmHexColor;
 
@@ -564,7 +567,18 @@ UIColor *lcmHexColor;
 %end
 %hook CATextLayer
 - (void)setTextColor:(CGColorRef)textColor {
-    %orig([UIColor whiteColor].CGColor);
+    %orig([[UIColor whiteColor] CGColor]);
+}
+%end
+%hook _ASDisplayView
+- (void)setAttributedText:(NSAttributedString *)attributedText {
+    NSMutableAttributedString *newAttributedString = [attributedText mutableCopy];
+    [newAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, newAttributedString.length)];
+    %orig(newAttributedString);
+}
+- (void)setTextColor:(UIColor *)textColor {
+    textColor = [UIColor whiteColor];
+    %orig(textColor);
 }
 %end
 %hook ASTextNode
@@ -577,20 +591,20 @@ UIColor *lcmHexColor;
 %end
 %hook ASTextFieldNode
 - (void)setTextColor:(UIColor *)textColor {
-   %orig([UIColor whiteColor]);
+    %orig([UIColor whiteColor]);
 }
 %end
 %hook ASTextView
 - (void)setTextColor:(UIColor *)textColor {
-   %orig([UIColor whiteColor]);
+    %orig([UIColor whiteColor]);
 }
 %end
 %hook ASButtonNode
 - (void)setTextColor:(UIColor *)textColor {
-   %orig([UIColor whiteColor]);
+    %orig([UIColor whiteColor]);
 }
 %end
-%hook UIControl // snackbar fix for lcm
+%hook UIControl
 - (UIColor *)backgroundColor {
     return [UIColor blackColor];
 }
