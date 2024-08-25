@@ -16,12 +16,20 @@ jobs:
            git config --global user.email "actions@github.com"
            git config --global user.name "GitHub Actions"
 
+      - name: Delete .bundle files
+        run: |
+          cd Bundles
+          rm -f YouLoop.bundle
+          git add .
+          git commit -m "override YouLoop bundle (1/2)"
+          git push origin
+
       - name: Make .bundle files
         run: |
           cd Bundles
           ln -s ../Tweaks/YouLoop/layout/Library/Application\ Support/YouLoop.bundle YouLoop.bundle
           git add .
-          git commit -m "override YouLoop bundle"
+          git commit -m "override YouLoop bundle (2/2)"
           git push origin
 
       - name: Update submodules
