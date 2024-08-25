@@ -1,4 +1,4 @@
-#import "../uYouPlus.h"
+#import "uYouPlus.h"
 
 // Keys for "Copy settings" button (for: uYouEnhanced)
 // In alphabetical order for tweaks after uYouEnhanced
