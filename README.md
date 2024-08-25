@@ -36,7 +36,7 @@
 [![Download](https://img.shields.io/badge/Download-blue?style=flat)](#download)<br>
 [![Building](https://img.shields.io/badge/Building-blue?style=flat)](#building)<br>
 [![Installation](https://img.shields.io/badge/Installation-blue?style=flat)](#installation)<br>
-[![Support the Developers](https://img.shields.io/badge/Support%20the%20Developers-blue?style=flat)](#support-the-developers)<br>
+[![Donations](https://img.shields.io/badge/Donations-blue?style=flat)](#donations)<br>
 [![Wiki](https://img.shields.io/badge/Wiki-blue?style=flat)](#wiki)<br>
 
 # Credits
@@ -343,7 +343,7 @@ or [qnblackcat/Building - Wiki](https://github.com/qnblackcat/uYouPlus/wiki/Buil
 
 See [Installation - Wiki](https://github.com/qnblackcat/uYouPlus/wiki/Installation).
 
-# Support the developers
+# Donations
 <a href="https://buymeacoffee.com/dayanch96"><img src="https://github.com/YTLitePlus/Assets/blob/main/Github/Buttons/Donations/Dayanch96(buymeacoffee).png" width="200"></a>
 &nbsp;
 <a href="https://github.com/sponsors/dayanch96"><img src="https://github.com/YTLitePlus/Assets/blob/main/Github/Buttons/Donations/Dayanch96(Github).png" width="200"></a>
