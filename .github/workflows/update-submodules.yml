@@ -16,6 +16,21 @@ jobs:
            git config --global user.email "actions@github.com"
            git config --global user.name "GitHub Actions"
 
+      - name: Add YouLoop submodule
+        run: |
+          git submodule add https://github.com/bhackel/YouLoop.git Tweaks/YouLoop
+          git add .
+          git commit -m "added YouLoop submodule"
+          git push origin
+
+      - name: Make .bundle files
+        run: |
+          cd Bundles
+          ln -s ../Tweaks/YouLoop/layout/Library/Application\ Support/YouGroupSettings.bundle YouLoop.bundle
+          git add .
+          git commit -m "Added YouLoop bundle"
+          git push origin
+
       - name: Update submodules
         run: |
           git submodule update --init --recursive --remote Tweaks/Alderis
@@ -39,6 +54,8 @@ jobs:
           git submodule update --init --recursive --remote Tweaks/YTVideoOverlay
           git add .
           git submodule update --init --recursive --remote Tweaks/YouMute
+          git add .
+          git submodule update --init --recursive --remote Tweaks/YouLoop
           git add .
           git submodule update --init --recursive --remote Tweaks/YouPiP
           git add .
