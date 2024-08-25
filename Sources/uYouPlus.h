@@ -83,6 +83,11 @@
 - (CABasicAnimation *)uYouEnhancedGetBlankColorAnimation;
 @end
 
+// OLED Live Chat - @bhackel
+@interface YTLUserDefaults : NSUserDefaults
++ (void)exportYtlSettings;
+@end
+
 // Hide Home Tab - @bhackel
 @interface YTPivotBarItemViewAccessibilityControl : UIControl
 @end
