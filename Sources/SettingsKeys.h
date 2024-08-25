@@ -1,6 +1,6 @@
 #import "../uYouPlus.h"
 
-// Keys for "Copy Settings" button (for: uYouEnhanced)
+// Keys for "Copy settings" button (for: uYouEnhanced)
 // In alphabetical order for tweaks after uYouEnhanced
 NSArray *NSUserDefaultsCopyKeys = @[
     // uYouEnhanced - gathered using get_keys.py
@@ -11,6 +11,8 @@ NSArray *NSUserDefaultsCopyKeys = @[
     @"hidePreviewCommentSection_enabled", @"hidePreviousAndNextButton_enabled", @"hideRemixButton_enabled", @"hideReportButton_enabled", @"hideRightPanel_enabled", @"hideShareButton_enabled", @"hideSponsorBlockButton_enabled", @"hideSubcriptions_enabled", @"hideSubscriptionsNotificationBadge_enabled", @"hideThanksButton_enabled", @"hideVideoPlayerShadowOverlayButtons_enabled", @"hideVideoTitle_enabled", @"hideYouTubeLogo_enabled",
     @"lowContrastMode_enabled", @"newSettingsUI_enabled", @"noRelatedWatchNexts_enabled", @"noSuggestedVideo_enabled", @"noVideosInFullscreen_enabled",
     @"pinchToZoom_enabled", @"portraitFullscreen_enabled", @"redProgressBar_enabled", @"redSubscribeButton_enabled", @"reExplore_enabled", @"shortsQualityPicker_enabled", @"slideToSeek_enabled", @"snapToChapter_enabled", @"stockVolumeHUD_enabled", @"stickNavigationBar_enabled", @"uYouAdBlockingWorkaround_enabled", @"uYouAdBlockingWorkaroundLite_enabled", @"ytMiniPlayer_enabled", @"ytNoModernUI_enabled", @"ytStartupAnimation_enabled",
+    // uYou - https://github.com/MiRO92/uYou-for-YouTube
+    @"showedWelcomeVC", @"hideShortsTab", @"hideCreateTab", @"hideCastButton", @"relatedVideosAtTheEndOfYTVideos", @"removeYouTubeAds", @"backgroundPlayback", @"disableAgeRestriction", @"iPadLayout", @"noSuggestedVideoAtEnd", @"shortsProgressBar", @"hideShortsCells", @"removeShortsCell", @"startupPage",
     // DEMC - https://github.com/therealFoxster/DontEatMyContent/blob/master/Tweak.h
     @"DEMC_enabled", @"DEMC_colorViewsEnabled", @"DEMC_safeAreaConstant", @"DEMC_disableAmbientMode", 
     @"DEMC_limitZoomToFill", @"DEMC_enableForAllVideos",
