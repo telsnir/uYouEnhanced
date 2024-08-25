@@ -2,6 +2,7 @@
 #import "RootOptionsController.h"
 #import "ColourOptionsController.h"
 #import "ColourOptionsController2.h"
+#import "SettingsKeys.h"
 #import "AppIconOptionsController.h"
 
 #define VERSION_STRING [[NSString stringWithFormat:@"%@", @(OS_STRINGIFY(TWEAK_VERSION))] stringByReplacingOccurrencesOfString:@"\"" withString:@""]
@@ -70,20 +71,6 @@ SWITCH_ITEM3(
     });
 );
 */
-
-// Copy Settings KEYS
-NSArray *copyKeys = @[
-/* MAIN     Player Keys */ @"portraitFullscreen_enabled", @"slideToSeek_enabled", @"YTTapToSeek_enabled", @"doubleTapToSeek_disabled", @"snapToChapter_enabled", @"pinchToZoom_enabled", @"ytMiniPlayer_enabled", @"stockVolumeHUD_enabled", @"disablePullToFull_enabled", @"disableChapterSkip_enabled", @"alwaysShowRemainingTime_enabled", @"disableRemainingTime_enabled",
-/* MAIN     Button Keys */ @"enableShareButton_enabled", @"enableSaveToButton_enabled", @"hideYTMusicButton_enabled", @"hideAutoplaySwitch_enabled", @"hideCC_enabled", @"hideVideoTitle_enabled", @"disableCollapseButton_enabled", @"disableFullscreenButton_enabled", @"hideHUD_enabled", @"hidePaidPromotionCard_enabled", @"hideChannelWatermark_enabled", @"hideVideoPlayerShadowOverlayButtons_enabled", @"hidePreviousAndNextButton_enabled", @"redProgressBar_enabled", @"hideHoverCards_enabled", @"hideRightPanel_enabled", @"hideFullscreenActions_enabled", @"noSuggestedVideo_enabled", @"hideHeatwaves_enabled", @"hideDoubleTapToSeekOverlay_enabled", @"hideOverlayDarkBackground_enabled", @"disableAmbientMode_enabled", @"noVideosInFullscreen_enabled", @"noRelatedWatchNexts_enabled",
-/* MAIN     Shorts Keys */ @"hideBuySuperThanks_enabled", @"hideSubcriptions_enabled", @"disableResumeToShorts_enabled", @"shortsQualityPicker_enabled",
-/* MAIN  Player UI Keys */ @"redSubscribeButton_enabled", @"hideButtonContainers_enabled", @"hideConnectButton_enabled", @"hideShareButton_enabled", @"hideRemixButton_enabled", @"hideThanksButton_enabled", @"hideDownloadButton_enabled", @"hideClipButton_enabled", @"hideSaveToPlaylistButton_enabled", @"hideReportButton_enabled", @"hidePreviewCommentSection_enabled", @"hideCommentSection_enabled",
-/* MAIN    Overlay Keys */ @"disableAccountSection_enabled", @"disableAutoplaySection_enabled", @"disableTryNewFeaturesSection_enabled", @"disableVideoQualityPreferencesSection_enabled", @"disableNotificationsSection_enabled", @"disableManageAllHistorySection_enabled", @"disableYourDataInYouTubeSection_enabled", @"disablePrivacySection_enabled", @"disableLiveChatSection_enabled", @"hidePremiumPromos_enabled",
-/* MAIN     App UI Keys */ @"hideHomeTab_enabled", @"lowContrastMode_enabled", @"classicVideoPlayer_enabled", @"fixLowContrastMode_enabled", @"disableModernButtons_enabled", @"disableRoundedHints_enabled", @"disableModernFlags_enabled", @"ytNoModernUI_enabled", @"enableVersionSpoofer_enabled",
-/* MAIN       Misc Keys */ @"uYouAdBlockingWorkaroundLite_enabled", @"uYouAdBlockingWorkaround_enabled", @"disableAnimatedYouTubeLogo_enabled", @"centerYouTubeLogo_enabled", @"hideYouTubeLogo_enabled", @"ytStartupAnimation_enabled", @"disableHints_enabled", @"stickNavigationBar_enabled", @"hideSponsorBlockButton_enabled", @"hideChipBar_enabled", @"hidePlayNextInQueue_enabled", @"hideCommunityPosts_enabled", @"hideChannelHeaderLinks_enabled", @"iPhoneLayout_enabled", @"bigYTMiniPlayer_enabled", @"reExplore_enabled", @"autoHideHomeBar_enabled", @"hideSubscriptionsNotificationBadge_enabled", @"fixCasting_enabled", @"newSettingsUI_enabled", @"flex_enabled",
-/* TWEAK      uYou Keys */ @"showedWelcomeVC", @"hideShortsTab", @"hideCreateTab", @"hideCastButton", @"relatedVideosAtTheEndOfYTVideos", @"removeYouTubeAds", @"backgroundPlayback", @"disableAgeRestriction", @"iPadLayout", @"noSuggestedVideoAtEnd", @"shortsProgressBar", @"hideShortsCells", @"removeShortsCell", @"startupPage",
-/* TWEAK       iSB Keys */ @"userID", @"apiInstance", @"minimumDuration", @"skipNoticeDuration", @"kShowModifiedTime", @"showSkipNotice", @"showButtonsInPlayer", @"hideStartEndButtonInPlayer", @"showModifiedTime", @"skipAudioNotification", @"enableSkipCountTracking",
-/* TWEAK     YTUHD Keys */ @"EnableVP9", @"AllVP9"
-];
 
 static int contrastMode() {
     NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
@@ -193,6 +180,7 @@ extern NSBundle *uYouPlusBundle();
     ];
     [sectionItems addObject:developers];
 
+# pragma mark - Copy and Paste Settings
     YTSettingsSectionItem *copySettings = [%c(YTSettingsSectionItem)
         itemWithTitle:IS_ENABLED(@"replaceCopyandPasteButtons_enabled") ? LOC(@"EXPORT_SETTINGS") : LOC(@"COPY_SETTINGS")
         titleDescription:IS_ENABLED(@"replaceCopyandPasteButtons_enabled") ? LOC(@"EXPORT_SETTINGS_DESC") : LOC(@"COPY_SETTINGS_DESC")
@@ -201,9 +189,9 @@ extern NSBundle *uYouPlusBundle();
         selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
             if (IS_ENABLED(@"replaceCopyandPasteButtons_enabled")) {
                 // Export Settings functionality
-                NSURL *tempFileURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"exported_settings.txt"]];
+                NSURL *tempFileURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"uYouEnhancedSettings.txt"]];
                 NSMutableString *settingsString = [NSMutableString string];
-                for (NSString *key in copyKeys) {
+                for (NSString *key in NSUserDefaultsCopyKeys) {
                     id value = [[NSUserDefaults standardUserDefaults] objectForKey:key];
                     if (value) {
                         [settingsString appendFormat:@"%@: %@\n", key, value];
@@ -211,22 +199,34 @@ extern NSBundle *uYouPlusBundle();
                 }
                 [settingsString writeToURL:tempFileURL atomically:YES encoding:NSUTF8StringEncoding error:nil];
                 UIDocumentPickerViewController *documentPicker = [[UIDocumentPickerViewController alloc] initWithURL:tempFileURL inMode:UIDocumentPickerModeExportToService];
-                documentPicker.delegate = (id<UIDocumentPickerDelegate>)self;
                 documentPicker.allowsMultipleSelection = NO;
                 [settingsViewController presentViewController:documentPicker animated:YES completion:nil];
             } else {
-                // Copy Settings functionality (default behavior)
+                // Copy Settings functionality (DEFAULT - Copies to Clipboard)
                 NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                 NSMutableString *settingsString = [NSMutableString string];
-                for (NSString *key in copyKeys) {
-                    if ([userDefaults objectForKey:key]) {
-                        NSString *value = [userDefaults objectForKey:key];
+                for (NSString *key in NSUserDefaultsCopyKeys) {
+                    id value = [userDefaults objectForKey:key];
+                    id defaultValue = NSUserDefaultsCopyKeysDefaults[key];
+
+                    // Only include the setting if it is different from the default value
+                    // If no default value is found, include it by default
+                    if (value && (!defaultValue || ![value isEqual:defaultValue])) {
                         [settingsString appendFormat:@"%@: %@\n", key, value];
                     }
                 }       
                 [[UIPasteboard generalPasteboard] setString:settingsString];
                 // Show a confirmation message or perform some other action here
+                [[%c(GOOHUDManagerInternal) sharedInstance] showMessageMainThread:[%c(YTHUDMessage) messageWithText:@"Settings copied"]];
             }
+            // Prompt to export uYouEnhanced settings - @bhackel
+            UIAlertController *exportAlert = [UIAlertController alertControllerWithTitle:@"Export Settings" message:@"Note: This feature cannot save iSponsorBlock and most YouTube settings.\n\nWould you like to also export your uYouEnhanced Settings?" preferredStyle:UIAlertControllerStyleAlert];
+            [exportAlert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+            [exportAlert addAction:[UIAlertAction actionWithTitle:@"Export" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                // Export uYouEnhanced Settings functionality - @bhackhel
+                [%c(YTLUserDefaults) exportYtlSettings];
+            }]];
+            [settingsViewController presentViewController:exportAlert animated:YES completion:nil];
             return YES;
         }
     ];
@@ -241,7 +241,6 @@ extern NSBundle *uYouPlusBundle();
             if (IS_ENABLED(@"replaceCopyandPasteButtons_enabled")) {
                 // Import Settings functionality
                 UIDocumentPickerViewController *documentPicker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:@[@"public.text"] inMode:UIDocumentPickerModeImport];
-                documentPicker.delegate = (id<UIDocumentPickerDelegate>)self;
                 documentPicker.allowsMultipleSelection = NO;
                 [settingsViewController presentViewController:documentPicker animated:YES completion:nil];
                 return YES;
@@ -262,11 +261,18 @@ extern NSBundle *uYouPlusBundle();
                             }
                         }                 
                         [settingsViewController reloadData];
+                        [[%c(GOOHUDManagerInternal) sharedInstance] showMessageMainThread:[%c(YTHUDMessage) messageWithText:@"Settings applied"]];
                         SHOW_RELAUNCH_YT_SNACKBAR;
                     }
                 }]];
                 [settingsViewController presentViewController:confirmPasteAlert animated:YES completion:nil];
             }
+            // Reminder to import uYouEnhanced settings - @bhackel
+            UIAlertController *reminderAlert = [UIAlertController alertControllerWithTitle:@"Reminder" 
+                                                                                message:@"Remember to import your uYouEnhanced settings as well." 
+                                                                            preferredStyle:UIAlertControllerStyleAlert];
+            [reminderAlert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+            [settingsViewController presentViewController:reminderAlert animated:YES completion:nil];
             return YES;
         }
     ];
