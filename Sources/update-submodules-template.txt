@@ -90,7 +90,7 @@ jobs:
           ln -s ../Tweaks/uYouLocalization/layout/Library/Application\ Support/uYouLocalization.bundle uYouLocalization.bundle
           ln -s ../Tweaks/YTHoldForSpeed/layout/Library/Application\ Support/YTHoldForSpeed.bundle YTHoldForSpeed.bundle
           ln -s ../Tweaks/YouGroupSettings/layout/Library/Application\ Support/YouGroupSettings.bundle YouGroupSettings.bundle
-          ln -s ../Tweaks/YouLoop/layout/Library/Application\ Support/YouGroupSettings.bundle YouLoop.bundle
+          ln -s ../Tweaks/YouLoop/layout/Library/Application\ Support/YouLoop.bundle YouLoop.bundle
           ln -s ../Tweaks/YouTimeStamp/layout/Library/Application\ Support/YouTimeStamp.bundle YouTimeStamp.bundle
           git add .
           git commit -m "Added bundles"
