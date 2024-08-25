@@ -244,6 +244,25 @@ static NSMutableArray <YTIItemSectionRenderer *> *filteredArray(NSArray <YTIItem
 %end
 %end
 
+// Settings Menu with Blur Style - @arichornlover
+%group gSettingsStyle
+%hook YTWrapperSplitView
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    UIVisualEffectView *blurView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    blurView.frame = self.view.bounds;
+    blurView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self.view addSubview:blurView];
+    [self.view sendSubviewToBack:blurView];
+    // Apply dark theme if pageStyle is set to dark
+    if ([[NSUserDefaults standardUserDefaults] integerForKey:@"page_style"] == 1) {
+        self.view.backgroundColor = [UIColor blackColor];
+    }
+}
+%end
+%end
+
 // Hide YouTube Logo - @dayanch96
 %group gHideYouTubeLogo
 %hook YTHeaderLogoController
@@ -1689,6 +1708,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     // dlopen([[NSString stringWithFormat:@"%@/Frameworks/uYou.dylib", [[NSBundle mainBundle] bundlePath]] UTF8String], RTLD_LAZY);
 
     %init;
+    if (IS_ENABLED(@"settingsStyle_enabled")) {
+        %init(gSettingsStyle);
+    }
     if (IS_ENABLED(@"hideYouTubeLogo_enabled")) {
         %init(gHideYouTubeLogo);
     }
@@ -1825,7 +1847,7 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
         %init(gFixCasting);
     }
 
-    // YTNoModernUI - @arichorn
+    // YTNoModernUI - @arichornlover
     BOOL ytNoModernUIEnabled = IS_ENABLED(@"ytNoModernUI_enabled");
     if (ytNoModernUIEnabled) {
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
