@@ -238,6 +238,9 @@
 @interface ELMContainerNode : NSObject
 @end
 
+@interface YTWrapperSplitView : UIView
+@end
+
 @interface YTAutonavEndscreenView : UIView
 @end
 
