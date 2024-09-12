@@ -167,6 +167,9 @@
 @interface YTPlaybackButton : UIControl
 @end
 
+@interface HelperVC : UIViewController
+@end
+
 @interface YTPlaylistHeaderViewController : UIViewController
 @property UIButton *downloadsButton;
 @end
