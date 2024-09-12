@@ -57,39 +57,51 @@ UIColor *lcmHexColor;
 %end
 %hook YTCommonColorPalette
 - (UIColor *)textPrimary {
+    NSLog(@"LowContrastMode: textPrimary called");
     return self.pageStyle == 1 ? [UIColor whiteColor] : %orig;
 }
 - (UIColor *)textSecondary {
+    NSLog(@"LowContrastMode: textSecondary called");
     return self.pageStyle == 1 ? [UIColor whiteColor] : %orig;
 }
 - (UIColor *)overlayTextPrimary {
+    NSLog(@"LowContrastMode: overlayTextPrimary called");
     return self.pageStyle == 1 ? [UIColor whiteColor] : %orig;
 }
 - (UIColor *)overlayTextSecondary {
+    NSLog(@"LowContrastMode: overlayTextSecondary called");
     return self.pageStyle == 1 ? [UIColor whiteColor] : %orig;
 }
 - (UIColor *)iconActive {
+    NSLog(@"LowContrastMode: iconActive called");
     return self.pageStyle == 1 ? [UIColor whiteColor] : %orig;
 }
 - (UIColor *)iconActiveOther {
+    NSLog(@"LowContrastMode: iconActiveOther called");
     return self.pageStyle == 1 ? [UIColor whiteColor] : %orig;
 }
 - (UIColor *)brandIconActive {
+    NSLog(@"LowContrastMode: brandIconActive called");
     return self.pageStyle == 1 ? [UIColor whiteColor] : %orig;
 }
 - (UIColor *)staticBrandWhite {
+    NSLog(@"LowContrastMode: staticBrandWhite called");
     return self.pageStyle == 1 ? [UIColor whiteColor] : %orig;
 }
 - (UIColor *)overlayIconActiveOther {
+    NSLog(@"LowContrastMode: overlayIconActiveOther called");
     return self.pageStyle == 1 ? [UIColor whiteColor] : %orig;
 }
 - (UIColor *)overlayIconInactive {
+    NSLog(@"LowContrastMode: overlayIconInactive called");
     return self.pageStyle == 1 ? [[UIColor whiteColor] colorWithAlphaComponent:0.7] : %orig;
 }
 - (UIColor *)overlayIconDisabled {
+    NSLog(@"LowContrastMode: overlayIconDisabled called");
     return self.pageStyle == 1 ? [[UIColor whiteColor] colorWithAlphaComponent:0.3] : %orig;
 }
 - (UIColor *)overlayFilledButtonActive {
+    NSLog(@"LowContrastMode: overlayFilledButtonActive called");
     return self.pageStyle == 1 ? [[UIColor whiteColor] colorWithAlphaComponent:0.2] : %orig;
 }
 %end
