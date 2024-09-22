@@ -395,9 +395,11 @@ static void refreshUYouAppearance() {
     if (IS_ENABLED(@"googleSignInPatch_enabled")) {
         %init(gGoogleSignInPatch);
     }
+/*
     if (IS_ENABLED(@"youtubeNativeShare_enabled")) {
         %init(gYouTubeNativeShare);
     }
+*/
     // if (@available(iOS 16, *)) {
     //     %init(iOS16);
     // }
