@@ -62,6 +62,43 @@
 #define DEFAULT_RATE 1.0f // YTSpeed
 #define LOWCONTRASTMODE_CUTOFF_VERSION @"17.38.10" // LowContrastMode (v17.33.2-17.38.10)
 
+// Keys
+// App appearance
+static NSString *const kAppTheme = @"appTheme";
+static NSString *const kOLEDKeyboard = @"oledKeyBoard_enabled";
+// Video player
+static NSString *const kSlideToSeek = @"slideToSeek_enabled";
+static NSString *const kSnapToChapter = @"snapToChapter_enabled";
+static NSString *const kPinchToZoom = @"pinchToZoom_enabled";
+static NSString *const kYTMiniPlayer = @"ytMiniPlayer_enabled";
+static NSString *const kHideRemixButton = @"hideRemixButton_enabled";
+static NSString *const kHideClipButton = @"hideClipButton_enabled";
+static NSString *const kHideDownloadButton = @"hideDownloadButton_enabled";
+static NSString *const kStockVolumeHUD = @"stockVolumeHUD_enabled";
+// Video controls overlay
+static NSString *const kHideAutoplaySwitch = @"hideAutoplaySwitch_enabled";
+static NSString *const kHideCC = @"hideCC_enabled";
+static NSString *const kHideHUD = @"hideHUD_enabled";
+static NSString *const kHidePaidPromotionCard = @"hidePaidPromotionCard_enabled";
+static NSString *const kHideChannelWatermark = @"hideChannelWatermark_enabled";
+static NSString *const kRedProgressBar = @"redProgressBar_enabled";
+static NSString *const kHideHoverCards = @"hideHoverCards_enabled";
+static NSString *const kHideRightPanel = @"hideRightPanel_enabled";
+// Shorts control overlay
+static NSString *const kHideBuySuperThanks = @"hideBuySuperThanks_enabled";
+static NSString *const kHideSubscriptions = @"hideSubscriptions_enabled";
+// Miscellaneous
+static NSString *const kHideiSponsorBlockButton = @"hideiSponsorBlockButton_enabled";
+static NSString *const kDisableHints = @"disableHints_enabled";
+static NSString *const kYTStartupAnimation = @"ytStartupAnimation_enabled";
+static NSString *const kHideChipBar = @"hideChipBar_enabled";
+static NSString *const kHidePlayNextInQueue = @"hidePlayNextInQueue_enabled";
+static NSString *const kiPhoneLayout = @"iPhoneLayout_enabled";
+static NSString *const kBigYTMiniPlayer = @"bigYTMiniPlayer_enabled";
+static NSString *const kReExplore = @"reExplore_enabled";
+static NSString *const kGoogleSigninFix = @"googleSigninFix_enabled";
+static NSString *const kFlex = @"flex_enabled";
+
 // Always show remaining time in video player - @bhackel
 // Header has been moved to https://github.com/PoomSmart/YouTubeHeader/blob/main/YTPlayerBarController.h
 // Header has been moved to https://github.com/PoomSmart/YouTubeHeader/blob/main/YTInlinePlayerBarContainerView.h
