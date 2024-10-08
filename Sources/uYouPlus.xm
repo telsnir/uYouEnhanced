@@ -895,9 +895,8 @@ static int contrastMode() {
 // WARNING: Please turn off the “Portrait Fullscreen” and "iPad Layout" Options while the option "Fullscreen to the Right" is enabled below.
 %group gFullscreenToTheRight
 %hook YTWatchViewController
-- (UIInterfaceOrientationMask)allowedFullScreenOrientations {
-    UIInterfaceOrientationMask orientations = UIInterfaceOrientationMaskLandscapeRight;
-    return orientations;
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskLandscapeRight | UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
 }
 %end
 %end
@@ -1541,7 +1540,7 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
 %end
 %end
 
-// Auto-Hide Home Bar - @arichornlover
+// Auto-Hide Home Bar
 %group gAutoHideHomeBar
 %hook UIViewController
 - (BOOL)prefersHomeIndicatorAutoHidden {
@@ -1557,7 +1556,7 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
 }
 %end
 
-// Disable hints - https://github.com/LillieH001/YouTube-Reborn/blob/v4/
+// Disable hints
 %group gDisableHints
 %hook YTSettings
 - (BOOL)areHintsDisabled {
@@ -1650,7 +1649,7 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
 %end
 %end
 
-// iPhone Layout - @LillieH1000 & @arichornlover
+// iPhone Layout - @arichornlover
 %group giPhoneLayout
 %hook UIDevice
 - (UIUserInterfaceIdiom)userInterfaceIdiom {
