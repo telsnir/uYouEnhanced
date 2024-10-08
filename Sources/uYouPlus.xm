@@ -44,12 +44,16 @@ NSBundle *tweakBundle = uYouPlusBundle();
 // Hide the (Connect / Share / Remix / Thanks / Download / Clip / Save / Report) Buttons under the Video Player - 17.33.2 and up - @PoomSmart (inspired by @arichornlover) - METHOD BROKE Server-Side on May 14th 2024
 static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *identifiers) {
     for (id child in [nodeController children]) {
+        NSLog(@"Child: %@", [child description]);
+
         if ([child isKindOfClass:%c(ELMNodeController)]) {
             NSArray <ELMComponent *> *elmChildren = [(ELMNodeController  * _Nullable)child children];
             for (ELMComponent *elmChild in elmChildren) {
                 for (NSString *identifier in identifiers) {
-                    if ([[elmChild description] containsString:identifier])
+                    if ([[elmChild description] containsString:identifier]) {
+                        NSLog(@"Found identifier: %@", identifier);
                         return YES;
+                    }
                 }
             }
         }
@@ -58,24 +62,28 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
             ASDisplayNode *childNode = ((ASNodeController  * _Nullable)child).node; // ELMContainerNode
             NSArray<id> *yogaChildren = childNode.yogaChildren;
             for (ASDisplayNode *displayNode in yogaChildren) {
-                if ([identifiers containsObject:displayNode.accessibilityIdentifier])
+                NSLog(@"Yoga Child: %@", displayNode.accessibilityIdentifier);
+
+                if ([identifiers containsObject:displayNode.accessibilityIdentifier]) {
+                    NSLog(@"Found identifier: %@", displayNode.accessibilityIdentifier);
                     return YES;
+                }
+
+                if (findCell(child, identifiers)) {
+                    return YES;
+                }
             }
-
-            return findCell(child, identifiers);
         }
-
-        return NO;
     }
     return NO;
 }
 
 %hook ASCollectionView // This stopped working on May 14th 2024 due to a Server-Side Change from YouTube.
-
 - (CGSize)sizeForElement:(ASCollectionElement  * _Nullable)element {
     if ([self.accessibilityIdentifier isEqualToString:@"id.video.scrollable_action_bar"]) {
         ASCellNode *node = [element node];
         ASNodeController *nodeController = [node controller];
+
         if (IS_ENABLED(@"hideShareButton_enabled") && findCell(nodeController, @[@"id.video.share.button"])) {
             return CGSizeZero;
         }
@@ -102,7 +110,6 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     }
     return %orig;
 }
-
 %end
 
 // Replace YouTube's download with uYou's
