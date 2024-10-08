@@ -422,42 +422,8 @@ extern NSBundle *uYouPlusBundle();
     # pragma mark - Video player options
     SECTION_HEADER(LOC(@"VIDEO_PLAYER_OPTIONS"));
 
-    SWITCH_ITEM3(
-        LOC(@"ENABLE_PORTRAIT_FULLSCREEN"), 
-        LOC(@"ENABLE_PORTRAIT_FULLSCREEN_DESC"), 
-        @"portraitFullscreen_enabled",
-        ({
-            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-                [[NSUserDefaults standardUserDefaults] setBool:enable forKey:@"portraitFullscreen_enabled"];
-                SHOW_RELAUNCH_YT_SNACKBAR;
-                return YES;
-            } else {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Incompatibile" message:@"This Option is Incompatible on an iPad Device." preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                [alert addAction:okAction];
-                [settingsViewController presentViewController:alert animated:YES completion:nil];
-                return NO;
-            }
-        });
-    );
-    SWITCH_ITEM3(
-        LOC(@"FULLSCREEN_TO_THE_RIGHT"), 
-        LOC(@"FULLSCREEN_TO_THE_RIGHT_DESC"), 
-        @"fullscreenToTheRight_enabled",
-        ({
-            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-                [[NSUserDefaults standardUserDefaults] setBool:enable forKey:@"fullscreenToTheRight_enabled"];
-                SHOW_RELAUNCH_YT_SNACKBAR;
-                return YES;
-            } else {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Incompatibile" message:@"This Option is Incompatible on an iPad Device." preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                [alert addAction:okAction];
-                [settingsViewController presentViewController:alert animated:YES completion:nil];
-                return NO;
-            }
-        });
-    );
+    SWITCH_ITEM2(LOC(@"ENABLE_PORTRAIT_FULLSCREEN"), LOC(@"ENABLE_PORTRAIT_FULLSCREEN_DESC"), @"portraitFullscreen_enabled");
+    SWITCH_ITEM2(LOC(@"FULLSCREEN_TO_THE_RIGHT"), LOC(@"FULLSCREEN_TO_THE_RIGHT_DESC"), @"fullscreenToTheRight_enabled");
     SWITCH_ITEM2(LOC(@"SLIDE_TO_SEEK"), LOC(@"SLIDE_TO_SEEK_DESC"), @"slideToSeek_enabled");
     SWITCH_ITEM2(LOC(@"ENABLE_TAP_TO_SEEK"), LOC(@"ENABLE_TAP_TO_SEEK_DESC"), @"YTTapToSeek_enabled");
     SWITCH_ITEM(LOC(@"DISABLE_DOUBLE_TAP_TO_SEEK"), LOC(@"DISABLE_DOUBLE_TAP_TO_SEEK_DESC"), @"doubleTapToSeek_disabled");
