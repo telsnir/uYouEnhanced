@@ -31,7 +31,7 @@
 
 // Switch with customizable code
 #define SWITCH3(title, description, key, code) \
-    [sectionItems addObject:[YTSettingsSectionItemClass \
+    [sectionItems addObject:[%c(YTSettingsSectionItem) \
         switchItemWithTitle:title \
         titleDescription:description \
         accessibilityIdentifier:nil \
@@ -467,12 +467,12 @@ extern NSBundle *uYouPlusBundle();
                     [alert addAction:okAction];
                     [settingsViewController presentViewController:alert animated:YES completion:nil];
                 }
-                [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:kHideRelatedWatchNexts];
+                [[NSUserDefaults standardUserDefaults] setBool:enable forKey:kHideRelatedWatchNexts];
                 [settingsViewController reloadData];
                 SHOW_RELAUNCH_YT_SNACKBAR;
                 return YES;
             }
-            [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:kHideRelatedWatchNexts];
+            [[NSUserDefaults standardUserDefaults] setBool:enable forKey:kHideRelatedWatchNexts];
             [settingsViewController reloadData];
             SHOW_RELAUNCH_YT_SNACKBAR;
             return YES;
