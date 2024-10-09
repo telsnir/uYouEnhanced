@@ -259,6 +259,12 @@ static NSString *const kGoogleSigninFix = @"googleSigninFix_enabled";
 - (void)confirmAlertDidPressConfirm;
 @end
 
+@interface ELMPBShowActionSheetCommand : GPBMessage // for uYouPlusPatches.xm
+@property (nonatomic, strong, readwrite) ELMPBCommand *onAppear;
+@property (nonatomic, assign, readwrite) BOOL hasOnAppear;
+- (id)listOptionArray;
+@end
+
 @interface YTTransportControlsButtonView : UIView
 @end
 
