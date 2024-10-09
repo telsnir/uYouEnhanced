@@ -149,7 +149,7 @@ YTMainAppControlsOverlayView *controlsOverlayView;
     didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> *)launchOptions {
     BOOL didFinishLaunching = %orig;
 
-    if (IS_ENABLED(@"flex_enabled")) {
+    if (IS_ENABLED(kFlex)) {
         [[%c(FLEXManager) performSelector:@selector(sharedManager)] performSelector:@selector(showExplorer)];
     }
 
@@ -157,7 +157,7 @@ YTMainAppControlsOverlayView *controlsOverlayView;
 }
 - (void)appWillResignActive:(id)arg1 {
     %orig;
-         if (IS_ENABLED(@"flex_enabled")) {
+         if (IS_ENABLED(kFlex)) {
         [[%c(FLEXManager) performSelector:@selector(sharedManager)] performSelector:@selector(showExplorer)];
     }
 }
@@ -431,7 +431,7 @@ static NSMutableArray <YTIItemSectionRenderer *> *filteredArray(NSArray <YTIItem
 // YTMiniPlayerEnabler: https://github.com/level3tjg/YTMiniplayerEnabler/
 %hook YTWatchMiniBarViewController
 - (void)updateMiniBarPlayerStateFromRenderer {
-    if (IS_ENABLED(@"ytMiniPlayer_enabled")) {}
+    if (IS_ENABLED(kYTMiniPlayer)) {}
     else { return %orig; }
 }
 %end
@@ -439,7 +439,7 @@ static NSMutableArray <YTIItemSectionRenderer *> *filteredArray(NSArray <YTIItem
 // YTNoHoverCards: https://github.com/level3tjg/YTNoHoverCards
 %hook YTCreatorEndscreenView
 - (void)setHidden:(BOOL)hidden {
-    if (IS_ENABLED(@"hideHoverCards_enabled"))
+    if (IS_ENABLED(kHideHoverCards))
         hidden = YES;
     %orig;
 }
@@ -680,7 +680,7 @@ static NSMutableArray <YTIItemSectionRenderer *> *filteredArray(NSArray <YTIItem
 // Disable animated YouTube Logo - @bhackel
 %hook YTHeaderLogoController
 - (void)configureYoodleNitrateController {
-    if (IS_ENABLED(@"disableAnimatedYouTubeLogo_enabled")) {
+    if (IS_ENABLED(kDisableAnimatedYouTubeLogo)) {
         return;
     }
     %orig;
@@ -727,18 +727,18 @@ static NSMutableArray <YTIItemSectionRenderer *> *filteredArray(NSArray <YTIItem
 // YTNoPaidPromo: https://github.com/PoomSmart/YTNoPaidPromo
 %hook YTMainAppVideoPlayerOverlayViewController
 - (void)setPaidContentWithPlayerData:(id)data {
-    if (IS_ENABLED(@"hidePaidPromotionCard_enabled")) {}
+    if (IS_ENABLED(kHidePaidPromotionCard)) {}
     else { return %orig; }
 }
 - (void)playerOverlayProvider:(YTPlayerOverlayProvider *)provider didInsertPlayerOverlay:(YTPlayerOverlay *)overlay {
-    if ([[overlay overlayIdentifier] isEqualToString:@"player_overlay_paid_content"] && IS_ENABLED(@"hidePaidPromotionCard_enabled")) return;
+    if ([[overlay overlayIdentifier] isEqualToString:@"player_overlay_paid_content"] && IS_ENABLED(kHidePaidPromotionCard)) return;
     %orig;
 }
 %end
 
 %hook YTInlineMutedPlaybackPlayerOverlayViewController
 - (void)setPaidContentWithPlayerData:(id)data {
-    if (IS_ENABLED(@"hidePaidPromotionCard_enabled")) {}
+    if (IS_ENABLED(kHidePaidPromotionCard)) {}
     else { return %orig; }
 }
 %end
@@ -1029,7 +1029,7 @@ static int contrastMode() {
 // Disable Double tap to skip chapter - @bhackel
 %hook YTDoubleTapToSeekController
 - (void)didTwoFingerDoubleTap:(id)arg1 {
-    if (IS_ENABLED(@"disableChapterSkip_enabled")) {
+    if (IS_ENABLED(kDisableChapterSkip)) {
         return;
     }
     %orig;
@@ -1040,7 +1040,7 @@ static int contrastMode() {
 %hook YTSegmentableInlinePlayerBarView
 - (void)didMoveToWindow {
     %orig;
-    if (IS_ENABLED(@"snapToChapter_enabled")) {
+    if (IS_ENABLED(kSnapToChapter)) {
         self.enableSnapToChapter = NO;
     }
 }
@@ -1049,7 +1049,7 @@ static int contrastMode() {
 // Disable Pinch to zoom
 %hook YTColdConfig
 - (BOOL)videoZoomFreeZoomEnabledGlobalConfig {
-    return IS_ENABLED(@"pinchToZoom_enabled") ? NO : %orig;
+    return IS_ENABLED(kPinchToZoom) ? NO : %orig;
 }
 %end
 
@@ -1058,7 +1058,7 @@ static int contrastMode() {
 %group gStockVolumeHUD
 %hook YTColdConfig
 - (BOOL)iosUseSystemVolumeControlInFullscreen {
-    return IS_ENABLED(@"stockVolumeHUD_enabled") ? YES : %orig;
+    return IS_ENABLED(kStockVolumeHUD) ? YES : %orig;
 }
 %end
 %hook UIApplication 
@@ -1070,14 +1070,14 @@ static int contrastMode() {
 
 %hook YTColdConfig
 - (BOOL)speedMasterArm2FastForwardWithoutSeekBySliding {
-    return IS_ENABLED(@"slideToSeek_enabled") ? NO : %orig;
+    return IS_ENABLED(SlideToSeek) ? NO : %orig;
 }
 %end
 
 // Disable double tap to seek
 %hook YTDoubleTapToSeekController
 - (void)enableDoubleTapToSeek:(BOOL)arg1 {
-    return IS_ENABLED(@"doubleTapToSeek_disabled") ? %orig(NO) : %orig;
+    return IS_ENABLED(kDoubleTapToSeek) ? %orig(NO) : %orig;
 }
 %end
 
@@ -1161,27 +1161,27 @@ static int contrastMode() {
 // Hide CC / Hide Autoplay switch / Hide YTMusic Button / Enable Share Button / Enable Save to Playlist Button
 %hook YTMainAppControlsOverlayView
 - (void)setClosedCaptionsOrSubtitlesButtonAvailable:(BOOL)arg1 { // hide CC button
-    return IS_ENABLED(@"hideCC_enabled") ? %orig(NO) : %orig;
+    return IS_ENABLED(HideCC) ? %orig(NO) : %orig;
 }
 - (void)setAutoplaySwitchButtonRenderer:(id)arg1 { // hide Autoplay
-    if (IS_ENABLED(@"hideAutoplaySwitch_enabled")) {}
+    if (IS_ENABLED(kHideAutoplaySwitch)) {}
     else { return %orig; }
 }
 - (void)setYoutubeMusicButton:(id)arg1 {
-    if (IS_ENABLED(@"hideYTMusicButton_enabled")) {
+    if (IS_ENABLED(@"kHideYTMusicButton)) {
     } else {
         %orig(arg1);
     }
 }
 - (void)setShareButtonAvailable:(BOOL)arg1 {
-    if (IS_ENABLED(@"enableShareButton_enabled")) {
+    if (IS_ENABLED(kEnableShareButton)) {
         %orig(YES);
     } else {
         %orig(NO);
     }
 }
 - (void)setAddToButtonAvailable:(BOOL)arg1 {
-    if (IS_ENABLED(@"enableSaveToButton_enabled")) {
+    if (IS_ENABLED(kEnableSaveToButton)) {
         %orig(YES);
     } else {
         %orig(NO);
@@ -1193,21 +1193,21 @@ static int contrastMode() {
 %hook YTMainAppControlsOverlayView
 - (void)layoutSubviews {
     %orig; 
-    if (IS_ENABLED(@"disableCollapseButton_enabled")) {  
+    if (IS_ENABLED(kDisableCollapseButton)) {  
         if (self.watchCollapseButton) {
             [self.watchCollapseButton removeFromSuperview];
         }
     }
 }
 - (BOOL)watchCollapseButtonHidden {
-    if (IS_ENABLED(@"disableCollapseButton_enabled")) {
+    if (IS_ENABLED(kDisableCollapseButton)) {
         return YES;
     } else {
         return %orig;
     }
 }
 - (void)setWatchCollapseButtonAvailable:(BOOL)available {
-    if (IS_ENABLED(@"disableCollapseButton_enabled")) {
+    if (IS_ENABLED(kDisableCollapseButton)) {
     } else {
         %orig(available);
     }
@@ -1220,7 +1220,7 @@ static int contrastMode() {
 %hook YTInlinePlayerBarContainerView
 - (void)layoutSubviews {
     %orig; 
-    if (IS_ENABLED(@"disableFullscreenButton_enabled")) {
+    if (IS_ENABLED(kDisableFullscreenButton)) {
         if (self.exitFullscreenButton) {
             [self.exitFullscreenButton removeFromSuperview];
             self.exitFullscreenButton.frame = CGRectZero;
@@ -1258,19 +1258,19 @@ static int contrastMode() {
 // Hide HUD Messages
 %hook YTHUDMessageView
 - (id)initWithMessage:(id)arg1 dismissHandler:(id)arg2 {
-    return IS_ENABLED(@"hideHUD_enabled") ? nil : %orig;
+    return IS_ENABLED(kHideHUD) ? nil : %orig;
 }
 %end
 
 // Hide Channel Watermark
 %hook YTColdConfig
 - (BOOL)iosEnableFeaturedChannelWatermarkOverlayFix {
-    return IS_ENABLED(@"hideChannelWatermark_enabled") ? NO : %orig;
+    return IS_ENABLED(kHideChannelWatermark) ? NO : %orig;
 }
 %end
 %hook YTAnnotationsViewController
 - (void)loadFeaturedChannelWatermark {
-    if (IS_ENABLED(@"hideChannelWatermark_enabled")) {}
+    if (IS_ENABLED(kHideChannelWatermark)) {}
     else { return %orig; }
 }
 %end
@@ -1373,7 +1373,7 @@ static int contrastMode() {
 
 %hook YTPlayerBarRectangleDecorationView // Red Progress Bar - New (Compatible for v19.10.7-latest)
 - (void)drawRectangleDecorationWithSideMasks:(CGRect)rect {
-    if (IS_ENABLED(@"redProgressBar_enabled")) {
+    if (IS_ENABLED(kRedProgressBar)) {
         YTIPlayerBarDecorationModel *model = [self valueForKey:@"_model"];
         int overlayMode = model.playingState.overlayMode;
         model.playingState.overlayMode = 1;
@@ -1388,7 +1388,7 @@ static int contrastMode() {
 // Disable the right panel in fullscreen mode
 %hook YTColdConfig
 - (BOOL)isLandscapeEngagementPanelEnabled {
-    return IS_ENABLED(@"hideRightPanel_enabled") ? NO : %orig;
+    return IS_ENABLED(kHideRightPanel) ? NO : %orig;
 }
 %end
 
@@ -1396,12 +1396,12 @@ static int contrastMode() {
 %hook _ASDisplayView
 - (void)didMoveToWindow {
     %orig;
-    if ((IS_ENABLED(@"hideBuySuperThanks_enabled")) && ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.suggested_action"])) { 
+    if ((IS_ENABLED(kHideBuySuperThanks)) && ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.suggested_action"])) { 
         self.hidden = YES; 
     }
 
 // Hide Header Links under Channel Profile - @arichornlover
-    if ((IS_ENABLED(@"hideChannelHeaderLinks_enabled")) && ([self.accessibilityIdentifier isEqualToString:@"eml.channel_header_links"])) {
+    if ((IS_ENABLED(kHideChannelHeaderLinks)) && ([self.accessibilityIdentifier isEqualToString:@"eml.channel_header_links"])) {
         self.hidden = YES;
         self.opaque = YES;
         self.userInteractionEnabled = NO;
@@ -1412,7 +1412,7 @@ static int contrastMode() {
     }
 
 // Completely Remove the Comment Section under the Video Player - @arichornlover
-    if ((IS_ENABLED(@"hideCommentSection_enabled")) && ([self.accessibilityIdentifier isEqualToString:@"id.ui.comments_entry_point_teaser"] 
+    if ((IS_ENABLED(kHideCommentSection)) && ([self.accessibilityIdentifier isEqualToString:@"id.ui.comments_entry_point_teaser"] 
     || [self.accessibilityIdentifier isEqualToString:@"id.ui.comments_entry_point_simplebox"] 
     || [self.accessibilityIdentifier isEqualToString:@"id.ui.video_metadata_carousel"] 
     || [self.accessibilityIdentifier isEqualToString:@"id.ui.carousel_header"])) {
@@ -1428,7 +1428,7 @@ static int contrastMode() {
     }
 
 // Hide the Comment Section Previews under the Video Player - @arichornlover
-    if ((IS_ENABLED(@"hidePreviewCommentSection_enabled")) && ([self.accessibilityIdentifier isEqualToString:@"id.ui.comments_entry_point_teaser"])) {
+    if ((IS_ENABLED(kHidePreviewCommentSection)) && ([self.accessibilityIdentifier isEqualToString:@"id.ui.comments_entry_point_teaser"])) {
         self.hidden = YES;
         self.opaque = YES;
         self.userInteractionEnabled = NO;
@@ -1444,7 +1444,7 @@ static int contrastMode() {
 
 %hook YTReelWatchRootViewController
 - (void)setPausedStateCarouselView {
-    if (IS_ENABLED(@"hideSubscriptions_enabled")) {}
+    if (IS_ENABLED(kHideSubscriptions)) {}
     else { return %orig; }
 }
 %end
@@ -1454,7 +1454,7 @@ static int contrastMode() {
 %hook YTIElementRenderer
 - (NSData *)elementData {
     NSString *description = [self description];
-    if (IS_ENABLED(@"hideCommunityPosts_enabled")) {
+    if (IS_ENABLED(kHideCommunityPosts)) {
         if ([description containsString:@"post_base_wrapper.eml"]) {
             if (!cellDividerData) cellDividerData = [NSData dataWithBytes:cellDividerDataBytes length:cellDividerDataBytesLength];
             return cellDividerData;
@@ -1469,13 +1469,13 @@ static int contrastMode() {
 %hook ELMContainerNode
 - (void)setBackgroundColor:(id)color {
     NSString *description = [self description];
-    if (IS_ENABLED(@"redSubscribeButton_enabled")) {
+    if (IS_ENABLED(kRedSubscribeButton)) {
         if ([description containsString:@"eml.compact_subscribe_button"]) {
             color = [UIColor redColor];
         }
     }
     // Hide the Button Containers under the Video Player - 17.33.2 and up - @arichornlover
-    if (IS_ENABLED(@"hideButtonContainers_enabled")) {
+    if (IS_ENABLED(kHideButtonContainers")) {
         if ([description containsString:@"id.video.like.button"] ||
             [description containsString:@"id.video.dislike.button"] ||
             [description containsString:@"id.video.share.button"] ||
@@ -1588,7 +1588,7 @@ static int contrastMode() {
 // YT startup animation
 %hook YTColdConfig
 - (BOOL)mainAppCoreClientIosEnableStartupAnimation {
-    return IS_ENABLED(@"ytStartupAnimation_enabled") ? YES : NO;
+    return IS_ENABLED(kYTStartupAnimation) ? YES : NO;
 }
 %end
 
@@ -1645,7 +1645,7 @@ static int contrastMode() {
 // Remove “Play next in queue” from the menu (@PoomSmart) - qnblackcat/uYouPlus#1138
 %hook YTMenuItemVisibilityHandler
 - (BOOL)shouldShowServiceItemRenderer:(YTIMenuConditionalServiceItemRenderer *)renderer {
-    return IS_ENABLED(@"hidePlayNextInQueue_enabled") && renderer.icon.iconType == 251 && renderer.secondaryIcon.iconType == 741 ? NO : %orig;
+    return IS_ENABLED(kHidePlayNextInQueue) && renderer.icon.iconType == 251 && renderer.secondaryIcon.iconType == 741 ? NO : %orig;
 }
 %end
 
@@ -1746,148 +1746,148 @@ static int contrastMode() {
 
     %init;
 /*
-    if (IS_ENABLED(@"settingsStyle_enabled")) {
+    if (IS_ENABLED(kSettingsStyle_enabled)) {
         %init(gSettingsStyle);
     }
 */
-    if (IS_ENABLED(@"hideYouTubeLogo_enabled")) {
+    if (IS_ENABLED(kHideYouTubeLogo)) {
         %init(gHideYouTubeLogo);
     }
-    if (IS_ENABLED(@"centerYouTubeLogo_enabled")) {
+    if (IS_ENABLED(kCenterYouTubeLogo)) {
         %init(gCenterYouTubeLogo);
     }
-    if (IS_ENABLED(@"hideSubscriptionsNotificationBadge_enabled")) {
+    if (IS_ENABLED(kHideSubscriptionsNotificationBadge)) {
         %init(gHideSubscriptionsNotificationBadge);
     }
-    if (IS_ENABLED(@"hidePreviousAndNextButton_enabled")) {
+    if (IS_ENABLED(kHidePreviousAndNextButton)) {
         %init(gHidePreviousAndNextButton);
     }
-    if (IS_ENABLED(@"hideOverlayDarkBackground_enabled")) {
+    if (IS_ENABLED(kHideOverlayDarkBackground)) {
         %init(gHideOverlayDarkBackground);
     }
-    if (IS_ENABLED(@"hideVideoPlayerShadowOverlayButtons_enabled")) {
+    if (IS_ENABLED(kHideVideoPlayerShadowOverlayButtons)) {
         %init(gHideVideoPlayerShadowOverlayButtons);
     }
-    if (IS_ENABLED(@"disableHints_enabled")) {
+    if (IS_ENABLED(kDisableHints)) {
         %init(gDisableHints);
     }
-    if (IS_ENABLED(@"redProgressBar_enabled")) {
+    if (IS_ENABLED(kRedProgressBar)) {
         %init(gRedProgressBar);
     }
-    if (IS_ENABLED(@"stickNavigationBar_enabled")) {
+    if (IS_ENABLED(kStickNavigationBar)) {
         %init(gStickNavigationBar);
     }
-    if (IS_ENABLED(@"hideChipBar_enabled")) {
+    if (IS_ENABLED(kHideChipBar)) {
         %init(gHideChipBar);
     }
-    if (IS_ENABLED(@"portraitFullscreen_enabled")) {
+    if (IS_ENABLED(kPortraitFullscreen)) {
         %init(gPortraitFullscreen);
     }
-    if (IS_ENABLED(@"fullscreenToTheRight_enabled")) {
+    if (IS_ENABLED(kFullscreenToTheRight)) {
         %init(gFullscreenToTheRight);
     }
-    if (IS_ENABLED(@"disableFullscreenButton_enabled")) {
+    if (IS_ENABLED(kDisableFullscreenButton)) {
         %init(gHideFullscreenButton);
     }
-    if (IS_ENABLED(@"hideFullscreenActions_enabled")) {
+    if (IS_ENABLED(kHideFullscreenActions)) {
         %init(hideFullscreenActions);
     }
-    if (IS_ENABLED(@"iPhoneLayout_enabled") && (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad)) {
+    if (IS_ENABLED(kiPhoneLayout) && (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad)) {
         %init(giPhoneLayout);
     }
-    if (IS_ENABLED(@"stockVolumeHUD_enabled")) {
+    if (IS_ENABLED(@"kStockVolumeHUD)) {
         %init(gStockVolumeHUD);
     }
-    if (IS_ENABLED(@"hideHeatwaves_enabled")) {
+    if (IS_ENABLED(kHideHeatwaves)) {
         %init(gHideHeatwaves);
     }
-    if (IS_ENABLED(@"noRelatedWatchNexts_enabled")) {
+    if (IS_ENABLED(kHideRelatedWatchNexts)) {
         %init(gNoRelatedWatchNexts);
     }
-    if (IS_ENABLED(@"noVideosInFullscreen_enabled")) {
+    if (IS_ENABLED(kHideVideosInFullscreen)) {
         %init(gNoVideosInFullscreen);
     }
-    if (IS_ENABLED(@"classicVideoPlayer_enabled")) {
+    if (IS_ENABLED(kClassicVideoPlayer)) {
         %init(gClassicVideoPlayer);
     }
-    if (IS_ENABLED(@"fixLowContrastMode_enabled")) {
+    if (IS_ENABLED(kFixLowContrastMode)) {
         %init(gFixLowContrastMode);
     }
-    if (IS_ENABLED(@"disableModernButtons_enabled")) {
+    if (IS_ENABLED(kDisableModernButtons)) {
         %init(gDisableModernButtons);
     }
-    if (IS_ENABLED(@"disableRoundedHints_enabled")) {
+    if (IS_ENABLED(kDisableRoundedHints)) {
         %init(gDisableRoundedHints);
     }
-    if (IS_ENABLED(@"disableModernFlags_enabled")) {
+    if (IS_ENABLED(kDisableModernFlags)) {
         %init(gDisableModernFlags);
     }
-    if (IS_ENABLED(@"disableAmbientMode_enabled")) {
+    if (IS_ENABLED(kDisableAmbientMode)) {
         %init(gDisableAmbientMode);
     }
-    if (IS_ENABLED(@"disableAccountSection_enabled")) {
+    if (IS_ENABLED(kDisableAccountSection)) {
         %init(gDisableAccountSection);
     }
-    if (IS_ENABLED(@"disableAutoplaySection_enabled")) {
+    if (IS_ENABLED(kDisableAutoplaySection)) {
         %init(gDisableAutoplaySection);
     }
-    if (IS_ENABLED(@"disableTryNewFeaturesSection_enabled")) {
+    if (IS_ENABLED(kDisableTryNewFeaturesSection)) {
         %init(gDisableTryNewFeaturesSection);
     }
-    if (IS_ENABLED(@"disableVideoQualityPreferencesSection_enabled")) {
+    if (IS_ENABLED(kDisableVideoQualityPreferencesSection)) {
         %init(gDisableVideoQualityPreferencesSection);
     }
-    if (IS_ENABLED(@"disableNotificationsSection_enabled")) {
+    if (IS_ENABLED(kDisableNotificationsSection)) {
         %init(gDisableNotificationsSection);
     }
-    if (IS_ENABLED(@"disableManageAllHistorySection_enabled")) {
+    if (IS_ENABLED(kDisableManageAllHistorySection)) {
         %init(gDisableManageAllHistorySection);
     }
-    if (IS_ENABLED(@"disableYourDataInYouTubeSection_enabled")) {
+    if (IS_ENABLED(kDisableYourDataInYouTubeSection)) {
         %init(gDisableYourDataInYouTubeSection);
     }
-    if (IS_ENABLED(@"disablePrivacySection_enabled")) {
+    if (IS_ENABLED(kDisablePrivacySection)) {
         %init(gDisablePrivacySection);
     }
-    if (IS_ENABLED(@"disableLiveChatSection_enabled")) {
+    if (IS_ENABLED(kDisableLiveChatSection)) {
         %init(gDisableLiveChatSection);
     }
-    if (IS_ENABLED(@"YTTapToSeek_enabled")) {
+    if (IS_ENABLED(kYTTapToSeek)) {
         %init(gYTTapToSeek);
     }
-    if (IS_ENABLED(@"hidePremiumPromos_enabled")) {
+    if (IS_ENABLED(kHidePremiumPromos)) {
         %init(gHidePremiumPromos);
     }
-    if (IS_ENABLED(@"youTabFakePremium_enabled")) {
+    if (IS_ENABLED(kYouTabFakePremium)) {
         %init(gFakePremium);
     }
-    if (IS_ENABLED(@"disablePullToFull_enabled")) {
+    if (IS_ENABLED(kDisablePullToFull)) {
         %init(gDisablePullToFull);
     }
-    if (IS_ENABLED(@"uYouAdBlockingWorkaroundLite_enabled")) {
+    if (IS_ENABLED(kAdBlockWorkaroundLite)) {
         %init(uYouAdBlockingWorkaroundLite);
     }
-    if (IS_ENABLED(@"uYouAdBlockingWorkaround_enabled")) {
+    if (IS_ENABLED(kAdBlockWorkaround)) {
         %init(uYouAdBlockingWorkaround);
     }
-    if (IS_ENABLED(@"hideHomeTab_enabled")) {
+    if (IS_ENABLED(kHideHomeTab)) {
         %init(gHideHomeTab);
     }
-    if (IS_ENABLED(@"autoHideHomeBar_enabled")) {
+    if (IS_ENABLED(kAutoHideHomeBar)) {
         %init(gAutoHideHomeBar);
     }
-    if (IS_ENABLED(@"hideDoubleTapToSeekOverlay_enabled")) {
+    if (IS_ENABLED(kHideDoubleTapToSeekOverlay)) {
         %init(gHideDoubleTapToSeekOverlay);
     }
-    if (IS_ENABLED(@"shortsQualityPicker_enabled")) {
+    if (IS_ENABLED(kShortsQualityPicker)) {
         %init(gShortsQualityPicker);
     }
-    if (IS_ENABLED(@"fixCasting_enabled")) {
+    if (IS_ENABLED(kFixCasting)) {
         %init(gFixCasting);
     }
 
     // YTNoModernUI - @arichornlover
-    BOOL ytNoModernUIEnabled = IS_ENABLED(@"ytNoModernUI_enabled");
+    BOOL ytNoModernUIEnabled = IS_ENABLED(kYTNoModernUI);
     if (ytNoModernUIEnabled) {
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         [userDefaults setBool:NO forKey:kEnableVersionSpoofer];
@@ -1930,7 +1930,7 @@ static int contrastMode() {
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kAdBlockWorkaround];
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"removeYouTubeAds"];
     }
-    if (![allKeys containsObject:kAdBlockWorkaround"]) { 
+    if (![allKeys containsObject:kAdBlockWorkaround]) { 
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kAdBlockWorkaroundLite];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kAdBlockWorkaround];
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"removeYouTubeAds"];
