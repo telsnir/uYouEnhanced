@@ -460,19 +460,19 @@ extern NSBundle *uYouPlusBundle();
         LOC(@"HIDE_ALL_VIDEOS_UNDER_PLAYER_DESC"), 
         kHideRelatedWatchNexts,
         ({
-            if (enabled) {
+            if (enable) {
                 if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad && UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
                     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Warning" message:@"Enabling this option will not hide the videos under the player on an iPad while being in Landscape Mode." preferredStyle:UIAlertControllerStyleAlert];
                     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                     [alert addAction:okAction];
                     [settingsViewController presentViewController:alert animated:YES completion:nil];
                 }
-                [[NSUserDefaults standardUserDefaults] setBool:enable forKey:kHideRelatedWatchNexts];
+                [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:kHideRelatedWatchNexts];
                 [settingsViewController reloadData];
                 SHOW_RELAUNCH_YT_SNACKBAR;
                 return YES;
             }
-            [[NSUserDefaults standardUserDefaults] setBool:enable forKey:kHideRelatedWatchNexts];
+            [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:kHideRelatedWatchNexts];
             [settingsViewController reloadData];
             SHOW_RELAUNCH_YT_SNACKBAR;
             return YES;
@@ -483,7 +483,7 @@ extern NSBundle *uYouPlusBundle();
     SECTION_HEADER(LOC(@"SHORTS_CONTROLS_OVERLAY_OPTIONS"));
 
     SWITCH(LOC(@"HIDE_SUPER_THANKS"), LOC(@"HIDE_SUPER_THANKS_DESC"), kHideBuySuperThanks);
-    SWITCH(LOC(@"HIDE_SUBCRIPTIONS"), LOC(@"HIDE_SUBCRIPTIONS_DESC"), kHideSubcriptions);
+    SWITCH(LOC(@"HIDE_SUBCRIPTIONS"), LOC(@"HIDE_SUBCRIPTIONS_DESC"), kHideSubscriptions);
     // SWITCH(LOC(@"DISABLE_RESUME_TO_SHORTS"), LOC(@"DISABLE_RESUME_TO_SHORTS_DESC"), kDisableResumeToShorts);
     SWITCH2(LOC(@"SHORTS_QUALITY_PICKER"), LOC(@"SHORTS_QUALITY_PICKER_DESC"), kShortsQualityPicker);
 
