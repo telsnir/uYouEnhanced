@@ -450,7 +450,7 @@ extern NSBundle *uYouPlusBundle();
     SWITCH2(LOC(@"HIDE_RIGHT_PANEL"), LOC(@"HIDE_RIGHT_PANEL_DESC"), kHideRightPanel);
     SWITCH2(LOC(@"HIDE_FULLSCREEN_ACTION_BUTTONS"), LOC(@"HIDE_FULLSCREEN_ACTION_BUTTONS_DESC"), kHideFullscreenActions);
     SWITCH2(LOC(@"HIDE_SUGGESTED_VIDEO"), LOC(@"HIDE_SUGGESTED_VIDEO_DESC"), kHideSuggestedVideo);
-    SWITCH2(LOC(@"HIDE_HEATWAVES_BAR"), LOC(@"HIDE_HEATWAVES_BAR_DESC"), HideHeatwaves);
+    SWITCH2(LOC(@"HIDE_HEATWAVES_BAR"), LOC(@"HIDE_HEATWAVES_BAR_DESC"), kHideHeatwaves);
     SWITCH2(LOC(@"HIDE_DOUBLE_TAP_TO_SEEK_OVERLAY"), LOC(@"HIDE_DOUBLE_TAP_TO_SEEK_OVERLAY_DESC"), kHideDoubleTapToSeekOverlay);
     SWITCH2(LOC(@"HIDE_DARK_OVERLAY_BACKGROUND"), LOC(@"HIDE_DARK_OVERLAY_BACKGROUND_DESC"), kHideOverlayDarkBackground);
     SWITCH2(LOC(@"HIDE_AMBIENT_MODE_IN_FULLSCREEN"), LOC(@"HIDE_AMBIENT_MODE_IN_FULLSCREEN_DESC"), kDisableAmbientMode);
@@ -607,7 +607,7 @@ extern NSBundle *uYouPlusBundle();
     ];
     [sectionItems addObject:lowContrastModeButton];
     SWITCH2(LOC(@"CLASSIC_VIDEO_PLAYER"), LOC(@"CLASSIC_VIDEO_PLAYER_DESC"), kClassicVideoPlayer);
-    SWITCH2(LOC(@"FIX_LOWCONTRASTMODE"), LOC(@"FIX_LOWCONTRASTMODE_DESC"), kFixLowContrastMode");
+    SWITCH2(LOC(@"FIX_LOWCONTRASTMODE"), LOC(@"FIX_LOWCONTRASTMODE_DESC"), kFixLowContrastMode);
     SWITCH2(LOC(@"DISABLE_MODERN_BUTTONS"), LOC(@"DISABLE_MODERN_BUTTONS_DESC"), kDisableModernButtons);
     SWITCH2(LOC(@"DISABLE_ROUNDED_CORNERS_ON_HINTS"), LOC(@"DISABLE_ROUNDED_CORNERS_ON_HINTS_DESC"), kDisableRoundedHints);
     SWITCH2(LOC(@"DISABLE_MODERN_FLAGS"), LOC(@"DISABLE_MODERN_FLAGS_DESC"), kDisableModernFlags);
@@ -636,194 +636,240 @@ extern NSBundle *uYouPlusBundle();
         detailTextBlock:^NSString *() {
             switch (appVersionSpoofer()) {
                 case 1:
-                    return @"v19.20.2";
+                    return @"v19.39.1";
                 case 2:
-                    return @"v19.19.7";
+                    return @"v19.38.2";
                 case 3:
-                    return @"v19.19.5";
+                    return @"v19.37.2";
                 case 4:
-                    return @"v19.18.2";
+                    return @"v19.36.1";
                 case 5:
-                    return @"v19.17.2";
+                    return @"v19.35.3";
                 case 6:
-                    return @"v19.16.3";
+                    return @"v19.34.2";
                 case 7:
-                    return @"v19.15.1";
+                    return @"v19.33.2";
                 case 8:
-                    return @"v19.14.3";
+                    return @"v19.32.8";
                 case 9:
-                    return @"v19.14.2";
+                    return @"v19.32.6";
                 case 10:
-                    return @"v19.13.1";
+                    return @"v19.31.4";
                 case 11:
-                    return @"v19.12.3";
+                    return @"v19.30.2";
                 case 12:
-                    return @"v19.10.7";
+                    return @"v19.29.1";
                 case 13:
-                    return @"v19.10.6";
+                    return @"v19.28.1";
                 case 14:
-                    return @"v19.10.5";
+                    return @"v19.26.5";
                 case 15:
-                    return @"v19.09.4";
+                    return @"v19.25.4";
                 case 16:
-                    return @"v19.09.3";
+                    return @"v19.25.3";
                 case 17:
-                    return @"v19.08.2";
+                    return @"v19.24.3";
                 case 18:
-                    return @"v19.07.5";
+                    return @"v19.24.2";
                 case 19:
-                    return @"v19.07.4";
+                    return @"v19.23.3";
                 case 20:
-                    return @"v19.06.2";
+                    return @"v19.22.6";
                 case 21:
-                    return @"v19.05.5";
+                    return @"v19.22.3";
                 case 22:
-                    return @"v19.05.3";
+                    return @"v19.21.3";
                 case 23:
-                    return @"v19.04.3";
+                    return @"v19.21.2";
                 case 24:
-                    return @"v19.03.2";
+                    return @"v19.20.2";
                 case 25:
-                    return @"v19.02.1";
+                    return @"v19.19.7";
                 case 26:
-                    return @"v19.01.1";
+                    return @"v19.19.5";
                 case 27:
-                    return @"v18.49.3";
+                    return @"v19.18.2";
                 case 28:
-                    return @"v18.48.3";
+                    return @"v19.17.2";
                 case 29:
-                    return @"v18.46.3";
+                    return @"v19.16.3";
                 case 30:
-                    return @"v18.45.2";
+                    return @"v19.15.1";
                 case 31:
-                    return @"v18.44.3";
+                    return @"v19.14.3";
                 case 32:
-                    return @"v18.43.4";
+                    return @"v19.14.2";
                 case 33:
-                    return @"v18.41.5";
+                    return @"v19.13.1";
                 case 34:
-                    return @"v18.41.3";
+                    return @"v19.12.3";
                 case 35:
-                    return @"v18.41.2";
+                    return @"v19.10.7";
                 case 36:
-                    return @"v18.40.1";
+                    return @"v19.10.6";
                 case 37:
-                    return @"v18.39.1";
+                    return @"v19.10.5";
                 case 38:
-                    return @"v18.38.2";
+                    return @"v19.09.4";
                 case 39:
-                    return @"v18.35.4";
+                    return @"v19.09.3";
                 case 40:
-                    return @"v18.34.5";
+                    return @"v19.08.2";
                 case 41:
-                    return @"v18.33.3";
+                    return @"v19.07.5";
                 case 42:
-                    return @"v18.33.2";
+                    return @"v19.07.4";
                 case 43:
-                    return @"v18.32.2";
+                    return @"v19.06.2";
                 case 44:
-                    return @"v18.31.3";
+                    return @"v19.05.5";
                 case 45:
-                    return @"v18.30.7";
+                    return @"v19.05.3";
                 case 46:
-                    return @"v18.30.6";
+                    return @"v19.04.3";
                 case 47:
-                    return @"v18.29.1";
+                    return @"v19.03.2";
                 case 48:
-                    return @"v18.28.3";
+                    return @"v19.02.1";
                 case 49:
-                    return @"v18.27.3";
+                    return @"v19.01.1";
                 case 50:
-                    return @"v18.25.1";
+                    return @"v18.49.3";
                 case 51:
-                    return @"v18.23.3";
+                    return @"v18.48.3";
                 case 52:
-                    return @"v18.22.9";
+                    return @"v18.46.3";
                 case 53:
-                    return @"v18.21.3";
+                    return @"v18.45.2";
                 case 54:
-                    return @"v18.20.3";
+                    return @"v18.44.3";
                 case 55:
-                    return @"v18.19.1";
+                    return @"v18.43.4";
                 case 56:
-                    return @"v18.18.2";
+                    return @"v18.41.5";
                 case 57:
-                    return @"v18.17.2";
+                    return @"v18.41.3";
                 case 58:
-                    return @"v18.16.2";
+                    return @"v18.41.2";
                 case 59:
-                    return @"v18.15.1";
+                    return @"v18.40.1";
                 case 60:
-                    return @"v18.14.1";
+                    return @"v18.39.1";
                 case 61:
-                    return @"v18.13.4";
+                    return @"v18.38.2";
                 case 62:
-                    return @"v18.12.2";
+                    return @"v18.35.4";
                 case 63:
-                    return @"v18.11.2";
+                    return @"v18.34.5";
                 case 64:
-                    return @"v18.10.1";
+                    return @"v18.33.3";
                 case 65:
-                    return @"v18.09.4";
+                    return @"v18.33.2";
                 case 66:
-                    return @"v18.08.1";
+                    return @"v18.32.2";
                 case 67:
-                    return @"v18.07.5";
+                    return @"v18.31.3";
                 case 68:
-                    return @"v18.05.2";
+                    return @"v18.30.7";
                 case 69:
-                    return @"v18.04.3";
+                    return @"v18.30.6";
                 case 70:
-                    return @"v18.03.3";
+                    return @"v18.29.1";
                 case 71:
-                    return @"v18.02.03";
+                    return @"v18.28.3";
                 case 72:
-                    return @"v18.01.6";
+                    return @"v18.27.3";
                 case 73:
-                    return @"v18.01.4";
+                    return @"v18.25.1";
                 case 74:
-                    return @"v18.01.2";
+                    return @"v18.23.3";
                 case 75:
-                    return @"v17.49.6";
+                    return @"v18.22.9";
                 case 76:
-                    return @"v17.49.4";
+                    return @"v18.21.3";
                 case 77:
-                    return @"v17.46.4";
+                    return @"v18.20.3";
                 case 78:
-                    return @"v17.45.1";
+                    return @"v18.19.1";
                 case 79:
-                    return @"v17.44.4";
+                    return @"v18.18.2";
                 case 80:
-                    return @"v17.43.1";
+                    return @"v18.17.2";
                 case 81:
-                    return @"v17.42.7";
+                    return @"v18.16.2";
                 case 82:
-                    return @"v17.42.6";
+                    return @"v18.15.1";
                 case 83:
-                    return @"v17.41.2";
+                    return @"v18.14.1";
                 case 84:
-                    return @"v17.40.5";
+                    return @"v18.13.4";
                 case 85:
-                    return @"v17.39.4";
+                    return @"v18.12.2";
                 case 86:
-                    return @"v17.38.10";
+                    return @"v18.11.2";
                 case 87:
-                    return @"v17.38.9";
+                    return @"v18.10.1";
                 case 88:
-                    return @"v17.37.2";
+                    return @"v18.09.4";
                 case 89:
-                    return @"v17.36.4";
+                    return @"v18.08.1";
                 case 90:
-                    return @"v17.36.3";
+                    return @"v18.07.5";
                 case 91:
-                    return @"v17.35.3";
+                    return @"v18.05.2";
                 case 92:
-                    return @"v17.34.3";
+                    return @"v18.04.3";
                 case 93:
+                    return @"v18.03.3";
+                case 94:
+                    return @"v18.02.03";
+                case 95:
+                    return @"v18.01.6";
+                case 96:
+                    return @"v18.01.4";
+                case 97:
+                    return @"v18.01.2";
+                case 98:
+                    return @"v17.49.6";
+                case 99:
+                    return @"v17.49.4";
+                case 100:
+                    return @"v17.46.4";
+                case 101:
+                    return @"v17.45.1";
+                case 102:
+                    return @"v17.44.4";
+                case 103:
+                    return @"v17.43.1";
+                case 104:
+                    return @"v17.42.7";
+                case 105:
+                    return @"v17.42.6";
+                case 106:
+                    return @"v17.41.2";
+                case 107:
+                    return @"v17.40.5";
+                case 108:
+                    return @"v17.39.4";
+                case 109:
+                    return @"v17.38.10";
+                case 110:
+                    return @"v17.38.9";
+                case 111:
+                    return @"v17.37.2";
+                case 112:
+                    return @"v17.36.4";
+                case 113:
+                    return @"v17.36.3";
+                case 114:
+                    return @"v17.35.3";
+                case 115:
+                    return @"v17.34.3";
+                case 116:
                     return @"v17.33.2";
                 case 0:
                 default:
-                    return @"v19.21.2";
+                    return @"v19.40.4";
             }
         }
         selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
