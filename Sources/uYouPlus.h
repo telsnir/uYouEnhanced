@@ -117,7 +117,6 @@ static NSString *const kHideBuySuperThanks = @"hideBuySuperThanks_enabled";
 static NSString *const kHideSubscriptions = @"hideSubscriptions_enabled";
 static NSString *const kShortsQualityPicker = @"shortsQualityPicker_enabled";
 // Video player buttons
-kHideConnectButton
 static NSString *const kHideConnectButton = @"hideConnectButton_enabled";
 static NSString *const kHideShareButton = @"hideShareButton_enabled";
 static NSString *const kHideRemixButton = @"hideRemixButton_enabled";
