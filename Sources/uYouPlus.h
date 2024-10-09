@@ -243,11 +243,6 @@ static NSString *const kGoogleSigninFix = @"googleSigninFix_enabled";
 - (void)alignCustomViewToCenterOfWindow;
 @end
 
-// uYou Controls
-@interface YTMainAppControlsOverlayView : UIView
-- (void)uYou;
-@end
-
 // uYouPlus
 @interface YTHeaderLogoController : UIView
 @property(readonly, nonatomic) long long pageStyle;
