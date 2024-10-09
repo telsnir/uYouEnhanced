@@ -127,17 +127,41 @@ static NSString *const kHideSaveToPlaylistButton = @"hideSaveToPlaylistButton_en
 static NSString *const kHideReportButton = @"hideReportButton_enabled";
 static NSString *const kHidePreviewCommentSection = @"hidePreviewCommentSection_enabled";
 static NSString *const kHideCommentSection = @"hideCommentSection_enabled";
+// UI Interface
+static NSString *const kHideHomeTab = @"hideHomeTab_enabled";
+static NSString *const kLowContrastMode = @"lowContrastMode_enabled";
+static NSString *const kClassicVideoPlayer = @"classicVideoPlayer_enabled";
+static NSString *const kFixLowContrastMode = @"fixLowContrastMode_enabled";
+static NSString *const kDisableModernButtons = @"disableModernButtons_enabled";
+static NSString *const kDisableRoundedHints = @"disableRoundedHints_enabled";
+static NSString *const kDisableModernFlags = @"disableModernFlags_enabled";
+static NSString *const kYTNoModernUI = @"ytNoModernUI_enabled";
+static NSString *const kEnableVersionSpoofer = @"enableVersionSpoofer_enabled";
 // Miscellaneous
-static NSString *const kHideiSponsorBlockButton = @"hideiSponsorBlockButton_enabled";
-static NSString *const kDisableHints = @"disableHints_enabled";
+static NSString *const kGoogleSignInPatch = @"googleSignInPatch_enabled";
+static NSString *const kAdBlockWorkaroundLite = @"adBlockWorkaroundLite_enabled";
+static NSString *const kAdBlockWorkaround = @"adBlockWorkaround_enabled";
+static NSString *const kYouTabFakePremium = @"youTabFakePremium_enabled";
+static NSString *const kDisableAnimatedYouTubeLogo = @"disableAnimatedYouTubeLogo_enabled";
+static NSString *const kHideYouTubeLogo = @"hideYouTubeLogo_enabled";
 static NSString *const kYTStartupAnimation = @"ytStartupAnimation_enabled";
+static NSString *const kDisableHints = @"disableHints_enabled";
+static NSString *const kStickNavigationBar = @"stickNavigationBar_enabled";
+static NSString *const kHideiSponsorBlockButton = @"hideiSponsorBlockButton_enabled";
 static NSString *const kHideChipBar = @"hideChipBar_enabled";
 static NSString *const kHidePlayNextInQueue = @"hidePlayNextInQueue_enabled";
+static NSString *const kHideCommunityPosts = @"hideCommunityPosts_enabled";
+static NSString *const kHideChannelHeaderLinks = @"hideChannelHeaderLinks_enabled";
 static NSString *const kiPhoneLayout = @"iPhoneLayout_enabled";
 static NSString *const kBigYTMiniPlayer = @"bigYTMiniPlayer_enabled";
 static NSString *const kReExplore = @"reExplore_enabled";
-static NSString *const kGoogleSigninFix = @"googleSigninFix_enabled";
+static NSString *const kAutoHideHomeBar = @"autoHideHomeBar_enabled";
+static NSString *const kHideSubscriptionsNotificationBadge = @"hideSubscriptionsNotificationBadge_enabled";
+static NSString *const kFixCasting = @"fixCasting_enabled";
+static NSString *const kNewSettingsU = @"newSettingsU_enabled";
 static NSString *const kFlex = @"flex_enabled";
+// unused (uYouEnhanced)
+static NSString *const kGoogleSigninFix = @"googleSigninFix_enabled";
 
 // Always show remaining time in video player - @bhackel
 // Header has been moved to https://github.com/PoomSmart/YouTubeHeader/blob/main/YTPlayerBarController.h
