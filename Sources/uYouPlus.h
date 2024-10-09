@@ -158,7 +158,7 @@ static NSString *const kReExplore = @"reExplore_enabled";
 static NSString *const kAutoHideHomeBar = @"autoHideHomeBar_enabled";
 static NSString *const kHideSubscriptionsNotificationBadge = @"hideSubscriptionsNotificationBadge_enabled";
 static NSString *const kFixCasting = @"fixCasting_enabled";
-static NSString *const kNewSettingsU = @"newSettingsU_enabled";
+static NSString *const kNewSettingsUI = @"newSettingsUI_enabled";
 static NSString *const kFlex = @"flex_enabled";
 // unused (uYouEnhanced)
 static NSString *const kGoogleSigninFix = @"googleSigninFix_enabled";
