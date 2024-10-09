@@ -244,7 +244,7 @@ static NSString *const kGoogleSigninFix = @"googleSigninFix_enabled";
 @end
 
 // uYou Controls
-@interface YTMainAppControlsOverlayView(uYou)
+@interface YTMainAppControlsOverlayView : UIView
 - (void)uYou;
 @end
 
