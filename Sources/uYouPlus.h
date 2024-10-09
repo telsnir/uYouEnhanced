@@ -12,6 +12,10 @@
 #import <YouTubeHeader/ASCollectionView.h>
 #import <YouTubeHeader/ELMCellNode.h>
 #import <YouTubeHeader/ELMNodeController.h>
+#import <YouTubeHeader/ELMPBShowActionSheetCommand.h>
+#import <YouTubeHeader/ELMPBElement.h>
+#import <YouTubeHeader/ELMPBProperties.h>
+#import <YouTubeHeader/ELMPBIdentifierProperties.h>
 #import <YouTubeHeader/GPBMessage.h>
 #import <YouTubeHeader/MLPlayerStickySettings.h>
 #import <YouTubeHeader/YTAppDelegate.h>
@@ -84,21 +88,46 @@ static NSString *const kDisableChapterSkip = @"disableChapterSkip_enabled";
 static NSString *const kAlwaysShowRemainingTime = @"alwaysShowRemainingTime_enabled";
 static NSString *const kDisableRemainingTime = @"disableRemainingTime_enabled";
 // Video controls overlay
+static NSString *const kEnableShareButton = @"enableShareButton_enabled";
+static NSString *const kEnableSaveToButton = @"enableSaveToButton_enabled";
+static NSString *const kHideYTMusicButton = @"hideYTMusicButton_enabled";
 static NSString *const kHideAutoplaySwitch = @"hideAutoplaySwitch_enabled";
 static NSString *const kHideCC = @"hideCC_enabled";
+static NSString *const kHideVideoTitle = @"hideVideoTitle_enabled";
+static NSString *const kDisableCollapseButton = @"disableCollapseButton_enabled";
+static NSString *const kDisableFullscreenButton = @"disableFullscreenButton_enabled";
 static NSString *const kHideHUD = @"hideHUD_enabled";
 static NSString *const kHidePaidPromotionCard = @"hidePaidPromotionCard_enabled";
 static NSString *const kHideChannelWatermark = @"hideChannelWatermark_enabled";
+static NSString *const kHideVideoPlayerShadowOverlayButtons = @"hideVideoPlayerShadowOverlayButtons_enabled";
+static NSString *const kHidePreviousAndNextButton = @"hidePreviousAndNextButton_enabled";
 static NSString *const kRedProgressBar = @"redProgressBar_enabled";
 static NSString *const kHideHoverCards = @"hideHoverCards_enabled";
 static NSString *const kHideRightPanel = @"hideRightPanel_enabled";
+static NSString *const kHideFullscreenActions = @"hideFullscreenActions_enabled";
+static NSString *const kHideSuggestedVideo = @"hideSuggestedVideo_enabled";
+static NSString *const kHideHeatwaves = @"hideHeatwaves_enabled";
+static NSString *const kHideDoubleTapToSeekOverlay = @"hideDoubleTapToSeekOverlay_enabled";
+static NSString *const kHideOverlayDarkBackground = @"hideOverlayDarkBackground_enabled";
+static NSString *const kDisableAmbientMode = @"disableAmbientMode_enabled";
+static NSString *const kHideVideosInFullscreen = @"hideVideosInFullscreen_enabled";
+static NSString *const kHideRelatedWatchNexts = @"hideRelatedWatchNexts_enabled";
 // Shorts control overlay
 static NSString *const kHideBuySuperThanks = @"hideBuySuperThanks_enabled";
 static NSString *const kHideSubscriptions = @"hideSubscriptions_enabled";
+static NSString *const kShortsQualityPicker = @"shortsQualityPicker_enabled";
 // Video player buttons
+kHideConnectButton
+static NSString *const kHideConnectButton = @"hideConnectButton_enabled";
+static NSString *const kHideShareButton = @"hideShareButton_enabled";
 static NSString *const kHideRemixButton = @"hideRemixButton_enabled";
-static NSString *const kHideClipButton = @"hideClipButton_enabled";
+static NSString *const kHideThanksButton = @"hideRemixButton_enabled";
 static NSString *const kHideDownloadButton = @"hideDownloadButton_enabled";
+static NSString *const kHideClipButton = @"hideClipButton_enabled";
+static NSString *const kHideSaveToPlaylistButton = @"hideSaveToPlaylistButton_enabled";
+static NSString *const kHideReportButton = @"hideReportButton_enabled";
+static NSString *const kHidePreviewCommentSection = @"hidePreviewCommentSection_enabled";
+static NSString *const kHideCommentSection = @"hideCommentSection_enabled";
 // Miscellaneous
 static NSString *const kHideiSponsorBlockButton = @"hideiSponsorBlockButton_enabled";
 static NSString *const kDisableHints = @"disableHints_enabled";
@@ -177,6 +206,11 @@ static NSString *const kFlex = @"flex_enabled";
 @interface YTNavigationBarTitleView (uYouEnhanced)
 @property (nonatomic, strong) UIView *customView;
 - (void)alignCustomViewToCenterOfWindow;
+@end
+
+// uYou Controls
+@interface YTMainAppControlsOverlayView(uYou)
+- (void)uYou;
 @end
 
 // uYouPlus
