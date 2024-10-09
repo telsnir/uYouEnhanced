@@ -1070,7 +1070,7 @@ static int contrastMode() {
 
 %hook YTColdConfig
 - (BOOL)speedMasterArm2FastForwardWithoutSeekBySliding {
-    return IS_ENABLED(SlideToSeek) ? NO : %orig;
+    return IS_ENABLED(kSlideToSeek) ? NO : %orig;
 }
 %end
 
@@ -1161,14 +1161,14 @@ static int contrastMode() {
 // Hide CC / Hide Autoplay switch / Hide YTMusic Button / Enable Share Button / Enable Save to Playlist Button
 %hook YTMainAppControlsOverlayView
 - (void)setClosedCaptionsOrSubtitlesButtonAvailable:(BOOL)arg1 { // hide CC button
-    return IS_ENABLED(HideCC) ? %orig(NO) : %orig;
+    return IS_ENABLED(kHideCC) ? %orig(NO) : %orig;
 }
 - (void)setAutoplaySwitchButtonRenderer:(id)arg1 { // hide Autoplay
     if (IS_ENABLED(kHideAutoplaySwitch)) {}
     else { return %orig; }
 }
 - (void)setYoutubeMusicButton:(id)arg1 {
-    if (IS_ENABLED(@"kHideYTMusicButton)) {
+    if (IS_ENABLED(kHideYTMusicButton)) {
     } else {
         %orig(arg1);
     }
@@ -1475,7 +1475,7 @@ static int contrastMode() {
         }
     }
     // Hide the Button Containers under the Video Player - 17.33.2 and up - @arichornlover
-    if (IS_ENABLED(kHideButtonContainers")) {
+    if (IS_ENABLED(kHideButtonContainers)) {
         if ([description containsString:@"id.video.like.button"] ||
             [description containsString:@"id.video.dislike.button"] ||
             [description containsString:@"id.video.share.button"] ||
@@ -1795,7 +1795,7 @@ static int contrastMode() {
     if (IS_ENABLED(kiPhoneLayout) && (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad)) {
         %init(giPhoneLayout);
     }
-    if (IS_ENABLED(@"kStockVolumeHUD)) {
+    if (IS_ENABLED(kStockVolumeHUD)) {
         %init(gStockVolumeHUD);
     }
     if (IS_ENABLED(kHideHeatwaves)) {
