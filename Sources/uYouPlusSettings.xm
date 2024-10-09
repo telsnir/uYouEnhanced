@@ -174,12 +174,12 @@ extern NSBundle *uYouPlusBundle();
 
 # pragma mark - Copy and Paste Settings
     YTSettingsSectionItem *copySettings = [%c(YTSettingsSectionItem)
-        itemWithTitle:IS_ENABLED(@"replaceCopyandPasteButtons_enabled") ? LOC(@"EXPORT_SETTINGS") : LOC(@"COPY_SETTINGS")
-        titleDescription:IS_ENABLED(@"replaceCopyandPasteButtons_enabled") ? LOC(@"EXPORT_SETTINGS_DESC") : LOC(@"COPY_SETTINGS_DESC")
+        itemWithTitle:IS_ENABLED(kReplaceCopyandPasteButtons) ? LOC(@"EXPORT_SETTINGS") : LOC(@"COPY_SETTINGS")
+        titleDescription:IS_ENABLED(kReplaceCopyandPasteButtons) ? LOC(@"EXPORT_SETTINGS_DESC") : LOC(@"COPY_SETTINGS_DESC")
         accessibilityIdentifier:nil
         detailTextBlock:nil
         selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
-            if (IS_ENABLED(@"replaceCopyandPasteButtons_enabled")) {
+            if (IS_ENABLED(kReplaceCopyandPasteButtons)) {
                 // Export Settings functionality
                 NSURL *tempFileURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"uYouEnhancedSettings.txt"]];
                 NSMutableString *settingsString = [NSMutableString string];
@@ -225,8 +225,8 @@ extern NSBundle *uYouPlusBundle();
     [sectionItems addObject:copySettings];
 
     YTSettingsSectionItem *pasteSettings = [%c(YTSettingsSectionItem)
-        itemWithTitle:IS_ENABLED(@"replaceCopyandPasteButtons_enabled") ? LOC(@"IMPORT_SETTINGS") : LOC(@"PASTE_SETTINGS")
-        titleDescription:IS_ENABLED(@"replaceCopyandPasteButtons_enabled") ? LOC(@"IMPORT_SETTINGS_DESC") : LOC(@"PASTE_SETTINGS_DESC")
+        itemWithTitle:IS_ENABLED(kReplaceCopyandPasteButtons) ? LOC(@"IMPORT_SETTINGS") : LOC(@"PASTE_SETTINGS")
+        titleDescription:IS_ENABLED(kReplaceCopyandPasteButtons) ? LOC(@"IMPORT_SETTINGS_DESC") : LOC(@"PASTE_SETTINGS_DESC")
         accessibilityIdentifier:nil
         detailTextBlock:nil
         selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
@@ -460,7 +460,7 @@ extern NSBundle *uYouPlusBundle();
         LOC(@"HIDE_ALL_VIDEOS_UNDER_PLAYER_DESC"), 
         kHideRelatedWatchNexts,
         ({
-            if (enable) {
+            if (enabled) {
                 if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad && UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
                     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Warning" message:@"Enabling this option will not hide the videos under the player on an iPad while being in Landscape Mode." preferredStyle:UIAlertControllerStyleAlert];
                     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
@@ -531,7 +531,7 @@ extern NSBundle *uYouPlusBundle();
         LOC(@"LOW_CONTRAST_MODE_DESC"),
         kLowContrastMode,
         ({
-            if (enable) {
+            if (enabled) {
                 Class YTVersionUtilsClass = %c(YTVersionUtils);
                 NSString *appVersion = [YTVersionUtilsClass performSelector:@selector(appVersion)];
                 NSComparisonResult result1 = [appVersion compare:@"17.33.2" options:NSNumericSearch];
@@ -616,7 +616,7 @@ extern NSBundle *uYouPlusBundle();
         LOC(@"YTNOMODERNUI_DESC"), 
         kYTNoModernUI,
         ({
-            if (enable) {
+            if (enabled) {
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Warning" message:@"This will force-enable other settings on restart. To disable them, you must turn this setting off." preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                 [alert addAction:okAction];
@@ -1322,7 +1322,7 @@ extern NSBundle *uYouPlusBundle();
             NSString *appVersion = [YTVersionUtilsClass performSelector:@selector(appVersion)];
             // Alert if the version is partially incompatible and the toggle is being turned on
             NSComparisonResult result = [appVersion compare:@"18.35.4" options:NSNumericSearch];
-            if (enable && result == NSOrderedAscending) {
+            if (enabled && result == NSOrderedAscending) {
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Warning" message:[NSString stringWithFormat:@"The \"You\" Tab doesn't exist in v%@, fake buttons will not be created.\nBut the \"Fake Premium Logo\" will still work.", appVersion] preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                 [alert addAction:okAction];
