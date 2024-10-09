@@ -1368,7 +1368,7 @@ extern NSBundle *uYouPlusBundle();
             NSString *appVersion = [YTVersionUtilsClass performSelector:@selector(appVersion)];
             // Alert if the version is partially incompatible and the toggle is being turned on
             NSComparisonResult result = [appVersion compare:@"18.35.4" options:NSNumericSearch];
-            if (enabled && result == NSOrderedAscending) {
+            if (enable && result == NSOrderedAscending) {
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Warning" message:[NSString stringWithFormat:@"The \"You\" Tab doesn't exist in v%@, fake buttons will not be created.\nBut the \"Fake Premium Logo\" will still work.", appVersion] preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                 [alert addAction:okAction];
