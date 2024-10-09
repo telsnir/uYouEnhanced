@@ -270,7 +270,7 @@ extern NSBundle *uYouPlusBundle();
     ];
     [sectionItems addObject:pasteSettings];
 
-    SWITCH_ITEM(LOC(@"REPLACE_COPY_AND_PASTE_BUTTONS"), LOC(@"REPLACE_COPY_AND_PASTE_BUTTONS_DESC"), @"replaceCopyandPasteButtons_enabled");
+    SWITCH(LOC(@"REPLACE_COPY_AND_PASTE_BUTTONS"), LOC(@"REPLACE_COPY_AND_PASTE_BUTTONS_DESC"), kReplaceCopyandPasteButtons);
 
     YTSettingsSectionItem *exitYT = [%c(YTSettingsSectionItem)
         itemWithTitle:LOC(@"QUIT_YOUTUBE")
@@ -531,7 +531,7 @@ extern NSBundle *uYouPlusBundle();
         LOC(@"LOW_CONTRAST_MODE_DESC"),
         kLowContrastMode,
         ({
-            if (enabled) {
+            if (enable) {
                 Class YTVersionUtilsClass = %c(YTVersionUtils);
                 NSString *appVersion = [YTVersionUtilsClass performSelector:@selector(appVersion)];
                 NSComparisonResult result1 = [appVersion compare:@"17.33.2" options:NSNumericSearch];
