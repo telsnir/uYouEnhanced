@@ -116,6 +116,8 @@ static NSString *const kHideBuySuperThanks = @"hideBuySuperThanks_enabled";
 static NSString *const kHideSubscriptions = @"hideSubscriptions_enabled";
 static NSString *const kShortsQualityPicker = @"shortsQualityPicker_enabled";
 // Video player buttons
+static NSString *const kRedSubscribeButton = @"redSubscribeButton_enabled";
+static NSString *const kHideButtonContainers = @"hideButtonContainers_enabled";
 static NSString *const kHideConnectButton = @"hideConnectButton_enabled";
 static NSString *const kHideShareButton = @"hideShareButton_enabled";
 static NSString *const kHideRemixButton = @"hideRemixButton_enabled";
@@ -126,6 +128,17 @@ static NSString *const kHideSaveToPlaylistButton = @"hideSaveToPlaylistButton_en
 static NSString *const kHideReportButton = @"hideReportButton_enabled";
 static NSString *const kHidePreviewCommentSection = @"hidePreviewCommentSection_enabled";
 static NSString *const kHideCommentSection = @"hideCommentSection_enabled";
+// App settings overlay
+static NSString *const kDisableAccountSection = @"disableAccountSection_enabled";
+static NSString *const kDisableAutoplaySection = @"disableAutoplaySection_enabled";
+static NSString *const kDisableTryNewFeaturesSection = @"disableTryNewFeaturesSection_enabled";
+static NSString *const kDisableVideoQualityPreferencesSection = @"disableVideoQualityPreferencesSection_enabled";
+static NSString *const kDisableNotificationsSection = @"disableNotificationsSection_enabled";
+static NSString *const kDisableManageAllHistorySection = @"disableManageAllHistorySection_enabled";
+static NSString *const kDisableYourDataInYouTubeSection = @"disableYourDataInYouTubeSection_enabled";
+static NSString *const kDisablePrivacySection = @"disablePrivacySection_enabled";
+static NSString *const kDisableLiveChatSection = @"disableLiveChatSection_enabled";
+static NSString *const kHidePremiumPromos = @"hidePremiumPromos_enabled";
 // UI Interface
 static NSString *const kHideHomeTab = @"hideHomeTab_enabled";
 static NSString *const kLowContrastMode = @"lowContrastMode_enabled";
