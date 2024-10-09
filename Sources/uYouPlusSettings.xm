@@ -616,7 +616,7 @@ extern NSBundle *uYouPlusBundle();
         LOC(@"YTNOMODERNUI_DESC"), 
         kYTNoModernUI,
         ({
-            if (enabled) {
+            if (enable) {
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Warning" message:@"This will force-enable other settings on restart. To disable them, you must turn this setting off." preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                 [alert addAction:okAction];
