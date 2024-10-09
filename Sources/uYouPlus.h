@@ -63,18 +63,26 @@
 #define LOWCONTRASTMODE_CUTOFF_VERSION @"17.38.10" // LowContrastMode (v17.33.2-17.38.10)
 
 // Keys
+// Copy/Paste Settings
+static NSString *const kReplaceCopyandPasteButtons = @"replaceCopyandPasteButtons_enabled";
 // App appearance
 static NSString *const kAppTheme = @"appTheme";
 static NSString *const kOLEDKeyboard = @"oledKeyBoard_enabled";
 // Video player
+static NSString *const kPortraitFullscreen = @"portraitFullscreen_enabled";
+static NSString *const kFullscreenToTheRight = @"fullscreenToTheRight_enabled";
 static NSString *const kSlideToSeek = @"slideToSeek_enabled";
+static NSString *const kYTTapToSeek = @"YTTapToSeek_enabled";
+static NSString *const kDoubleTapToSeek = @"doubleTapToSeek_enabled";
 static NSString *const kSnapToChapter = @"snapToChapter_enabled";
 static NSString *const kPinchToZoom = @"pinchToZoom_enabled";
 static NSString *const kYTMiniPlayer = @"ytMiniPlayer_enabled";
-static NSString *const kHideRemixButton = @"hideRemixButton_enabled";
-static NSString *const kHideClipButton = @"hideClipButton_enabled";
-static NSString *const kHideDownloadButton = @"hideDownloadButton_enabled";
 static NSString *const kStockVolumeHUD = @"stockVolumeHUD_enabled";
+static NSString *const kReplaceYTDownloadWithuYou = @"kReplaceYTDownloadWithuYou_enabled";
+static NSString *const kDisablePullToFull = @"disablePullToFull_enabled";
+static NSString *const kDisableChapterSkip = @"disableChapterSkip_enabled";
+static NSString *const kAlwaysShowRemainingTime = @"alwaysShowRemainingTime_enabled";
+static NSString *const kDisableRemainingTime = @"disableRemainingTime_enabled";
 // Video controls overlay
 static NSString *const kHideAutoplaySwitch = @"hideAutoplaySwitch_enabled";
 static NSString *const kHideCC = @"hideCC_enabled";
@@ -87,6 +95,10 @@ static NSString *const kHideRightPanel = @"hideRightPanel_enabled";
 // Shorts control overlay
 static NSString *const kHideBuySuperThanks = @"hideBuySuperThanks_enabled";
 static NSString *const kHideSubscriptions = @"hideSubscriptions_enabled";
+// Video player buttons
+static NSString *const kHideRemixButton = @"hideRemixButton_enabled";
+static NSString *const kHideClipButton = @"hideClipButton_enabled";
+static NSString *const kHideDownloadButton = @"hideDownloadButton_enabled";
 // Miscellaneous
 static NSString *const kHideiSponsorBlockButton = @"hideiSponsorBlockButton_enabled";
 static NSString *const kDisableHints = @"disableHints_enabled";
