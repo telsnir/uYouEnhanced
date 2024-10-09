@@ -155,6 +155,7 @@ static NSString *const kAdBlockWorkaroundLite = @"adBlockWorkaroundLite_enabled"
 static NSString *const kAdBlockWorkaround = @"adBlockWorkaround_enabled";
 static NSString *const kYouTabFakePremium = @"youTabFakePremium_enabled";
 static NSString *const kDisableAnimatedYouTubeLogo = @"disableAnimatedYouTubeLogo_enabled";
+static NSString *const kCenterYouTubeLogo = @"centerYouTubeLogo_enabled";
 static NSString *const kHideYouTubeLogo = @"hideYouTubeLogo_enabled";
 static NSString *const kYTStartupAnimation = @"ytStartupAnimation_enabled";
 static NSString *const kDisableHints = @"disableHints_enabled";
