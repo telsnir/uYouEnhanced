@@ -1,4 +1,11 @@
 #import "AppIconOptionsController.h"
+#import <YouTubeHeader/YTAssetLoader.h>
+
+@interface AppIconOptionsController () <UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) NSArray<NSString *> *appIcons;
+@property (assign, nonatomic) NSInteger selectedIconIndex;
+@end
 
 @implementation AppIconOptionsController
 
