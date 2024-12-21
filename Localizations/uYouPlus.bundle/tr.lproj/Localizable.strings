@@ -277,6 +277,7 @@
 "FAKE_PREMIUM_WARNING" = "You sekmesi v%@ 'de mevcut değil, sahte düğmeler oluşturulmayacak.\nAncak, *Sahte Premium Logosu* hala çalışacaktır.";
 "FAKE_YOUR_PREMIUM_BENEFITS" = "Premium faydalarınız";
 "FAKE_DOWNLOADS" = "İndirmeler";
+"DISABLE_ANIMATED_YOUTUBE_LOGO" = "Animasyonlu YouTube Logosunu Devre Dışı Bırak";
 "CENTER_YOUTUBE_LOGO" = "YouTube Logosunu Ortala";
 "CENTER_YOUTUBE_LOGO_DESC" = "Resmi YouTube Logosunu ortalamak için bu seçeneği açın. Uygulama yeniden başlatılması gereklidir.";
 "HIDE_YOUTUBE_LOGO" = "YouTube Logosunu Gizle";
@@ -293,6 +294,8 @@
 "HIDE_INDICATORS_DESC" = "Tüm göstergeleri gizler. (örneğin: Aşağı kaydırma, Yukarı Kaydırma, Kaydırma Durumu)";
 "FIX_CASTING" = "Dökümü Düzelt";
 "FIX_CASTING_DESC" = "Dökümü düzeltmek için belirli A/B bayraklarını değiştirir.";
+"NEW_SETTINGS_UI" = "Yeni Ayarlar Arayüzünü Kullan";
+"NEW_SETTINGS_UI_DESC" = "İnce ayar(Tweak) kategorileriyle yeni Ayarlar Arayüzünü etkinleştirir.";
 
 "DEFAULT" = "Varsayılan";
 "CUSTOM_COLOR" = "Özel Renk";

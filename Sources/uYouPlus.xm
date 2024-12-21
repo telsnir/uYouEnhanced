@@ -443,19 +443,12 @@ static NSMutableArray <YTIItemSectionRenderer *> *filteredArray(NSArray <YTIItem
 %group gCenterYouTubeLogo 
 %hook YTNavigationBarTitleView
 - (void)setShouldCenterNavBarTitleView:(BOOL)center {
+    center = YES;
     %orig(center);
-    if (center) {
-        [self alignCustomViewToCenterOfWindow];
-    }
+    [self alignCustomViewToCenterOfWindow];
 }
 - (BOOL)shouldCenterNavBarTitleView {
     return YES;
-}
-%new;
-- (void)alignCustomViewToCenterOfWindow {
-    CGRect frame = self.customView.frame;
-    frame.origin.x = (self.window.frame.size.width - frame.size.width) / 2;
-    self.customView.frame = frame;
 }
 %end
 %end
@@ -605,7 +598,7 @@ static NSMutableArray <YTIItemSectionRenderer *> *filteredArray(NSArray <YTIItem
 // Fake premium - @bhackel
 %group gFakePremium
 // YouTube Premium Logo - @arichornlover & bhackel
-%hook YTHeaderLogoController
+%hook YTHeaderLogoControllerImpl // originally was "YTHeaderLogoController"
 - (void)setTopbarLogoRenderer:(YTITopbarLogoRenderer *)renderer {
     // Modify the type of the icon before setting the renderer
     YTIIcon *icon = renderer.iconImage;
@@ -719,43 +712,6 @@ static NSMutableArray <YTIItemSectionRenderer *> *filteredArray(NSArray <YTIItem
     }
     %orig;
 }
-%end
-
-// Shorts Quality Picker - @arichornlover
-%group gShortsQualityPicker
-%hook YTHotConfig
-- (BOOL)enableOmitAdvancedMenuInShortsVideoQualityPicker { return YES; }
-- (BOOL)enableShortsVideoQualityPicker { return YES; }
-- (BOOL)iosEnableImmersiveLivePlayerVideoQuality { return YES; }
-- (BOOL)iosEnableShortsPlayerVideoQuality { return YES; }
-- (BOOL)iosEnableShortsPlayerVideoQualityRestartVideo { return YES; }
-- (BOOL)iosEnableSimplerTitleInShortsVideoQualityPicker { return YES; }
-%end
-%end
-
-// YTShortsProgress - https://github.com/PoomSmart/YTShortsProgress/
-%hook YTShortsPlayerViewController
-- (BOOL)shouldAlwaysEnablePlayerBar { return YES; }
-- (BOOL)shouldEnablePlayerBarOnlyOnPause { return NO; }
-%end
-
-%hook YTReelPlayerViewController
-- (BOOL)shouldAlwaysEnablePlayerBar { return YES; }
-- (BOOL)shouldEnablePlayerBarOnlyOnPause { return NO; }
-%end
-
-%hook YTReelPlayerViewControllerSub
-- (BOOL)shouldAlwaysEnablePlayerBar { return YES; }
-- (BOOL)shouldEnablePlayerBarOnlyOnPause { return NO; }
-%end
-
-%hook YTColdConfig
-- (BOOL)iosEnableVideoPlayerScrubber { return YES; }
-- (BOOL)mobileShortsTablnlinedExpandWatchOnDismiss { return YES; }
-%end
-
-%hook YTHotConfig
-- (BOOL)enablePlayerBarForVerticalVideoWhenControlsHiddenInFullscreen { return YES; }
 %end
 
 // YTNoPaidPromo: https://github.com/PoomSmart/YTNoPaidPromo
@@ -1095,7 +1051,7 @@ static int contrastMode() {
 %group gStockVolumeHUD
 %hook YTColdConfig
 - (BOOL)iosUseSystemVolumeControlInFullscreen {
-    return IS_ENABLED(kStockVolumeHUD) ? YES : %orig;
+    return IS_ENABLED(kStockVolumeHUD) ? YES : NO;
 }
 %end
 %hook UIApplication 
@@ -1426,6 +1382,61 @@ static int contrastMode() {
 %hook YTColdConfig
 - (BOOL)isLandscapeEngagementPanelEnabled {
     return IS_ENABLED(kHideRightPanel) ? NO : %orig;
+}
+%end
+
+// Shorts Quality Picker - @arichornlover
+%group gShortsQualityPicker
+%hook YTHotConfig
+- (BOOL)enableOmitAdvancedMenuInShortsVideoQualityPicker { return YES; }
+- (BOOL)enableShortsVideoQualityPicker { return YES; }
+- (BOOL)iosEnableImmersiveLivePlayerVideoQuality { return YES; }
+- (BOOL)iosEnableShortsPlayerVideoQuality { return YES; }
+- (BOOL)iosEnableShortsPlayerVideoQualityRestartVideo { return YES; }
+- (BOOL)iosEnableSimplerTitleInShortsVideoQualityPicker { return YES; }
+%end
+%end
+
+// YTShortsProgress - https://github.com/PoomSmart/YTShortsProgress/
+%hook YTShortsPlayerViewController
+- (BOOL)shouldAlwaysEnablePlayerBar { return YES; }
+- (BOOL)shouldEnablePlayerBarOnlyOnPause { return NO; }
+%end
+
+%hook YTReelPlayerViewController
+- (BOOL)shouldAlwaysEnablePlayerBar { return YES; }
+- (BOOL)shouldEnablePlayerBarOnlyOnPause { return NO; }
+%end
+
+%hook YTReelPlayerViewControllerSub
+- (BOOL)shouldAlwaysEnablePlayerBar { return YES; }
+- (BOOL)shouldEnablePlayerBarOnlyOnPause { return NO; }
+%end
+
+%hook YTColdConfig
+- (BOOL)iosEnableVideoPlayerScrubber { return YES; }
+- (BOOL)mobileShortsTablnlinedExpandWatchOnDismiss { return YES; }
+%end
+
+%hook YTHotConfig
+- (BOOL)enablePlayerBarForVerticalVideoWhenControlsHiddenInFullscreen { return YES; }
+%end
+
+// Hide Shorts Cells - for uYou 3.0.4+ (PoomSmart/YTUnShorts)
+%hook YTIElementRenderer
+- (NSData *)elementData {
+    // Check if hideShortsCells is enabled
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"hideShortsCells"]) {
+        NSString *description = [self description];
+        
+        BOOL hasShorts = ([description containsString:@"shorts_shelf"] || [description containsString:@"shorts_video_cell"] || [description containsString:@"6Shorts"]) && ![description containsString:@"history*"];
+        BOOL hasShortsInHistory = [description containsString:@"compact_video.eml"] && [description containsString:@"youtube_shorts_"];
+
+        if (hasShorts || hasShortsInHistory) {
+            return [NSData data];
+        }
+    }
+    return %orig;
 }
 %end
 

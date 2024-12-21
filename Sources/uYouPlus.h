@@ -18,6 +18,7 @@
 #import <YouTubeHeader/GPBMessage.h>
 #import <YouTubeHeader/MLPlayerStickySettings.h>
 #import <YouTubeHeader/YTAppDelegate.h>
+#import <YouTubeHeader/YTAssetLoader.h>
 #import <YouTubeHeader/YTCollectionViewCell.h>
 #import <YouTubeHeader/YTIBrowseRequest.h>
 #import <YouTubeHeader/YTIButtonRenderer.h>
@@ -32,6 +33,7 @@
 #import <YouTubeHeader/YTIMenuConditionalServiceItemRenderer.h>
 #import <YouTubeHeader/YTInnerTubeCollectionViewController.h>
 #import <YouTubeHeader/YTInlinePlayerBarContainerView.h>
+#import <YouTubeHeader/YTBrowseViewController.h>
 #import <YouTubeHeader/YTIPivotBarItemRenderer.h>
 #import <YouTubeHeader/YTIPivotBarRenderer.h>
 #import <YouTubeHeader/YTIPivotBarSupportedRenderers.h>
