@@ -48,6 +48,7 @@
 #import <YouTubeHeader/YTPlayerOverlay.h>
 #import <YouTubeHeader/YTPlayerOverlayProvider.h>
 #import <YouTubeHeader/YTPlayerOverlayManager.h>
+#import <YouTubeHeader/QTMIcon.h>
 #import <YouTubeHeader/YTReelModel.h>
 #import <YouTubeHeader/YTReelWatchPlaybackOverlayView.h>
 #import <YouTubeHeader/YTResponder.h>
@@ -164,6 +165,7 @@ static NSString *const kDisableHints = @"disableHints_enabled";
 static NSString *const kStickNavigationBar = @"stickNavigationBar_enabled";
 static NSString *const kHideiSponsorBlockButton = @"hideiSponsorBlockButton_enabled";
 static NSString *const kHideChipBar = @"hideChipBar_enabled";
+static NSString *const kShowNotificationsTab = @"showNotificationsTab_enabled";
 static NSString *const kHidePlayNextInQueue = @"hidePlayNextInQueue_enabled";
 static NSString *const kHideCommunityPosts = @"hideCommunityPosts_enabled";
 static NSString *const kHideChannelHeaderLinks = @"hideChannelHeaderLinks_enabled";
